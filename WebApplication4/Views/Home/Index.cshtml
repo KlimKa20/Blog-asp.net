@@ -1,0 +1,91 @@
+﻿@using WebApplication4.Models
+@model IEnumerable<blog_project.Models.Article>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col" style="margin-top: 50px;">
+                <h4 class="text-center border rounded" style="background-color:white">@ViewData["Tags"]</h4>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <tbody>
+            @foreach (blog_project.Models.Article p in Model)
+            {
+                <tr style="background-color:rgb(255,216,216)">
+                    <td style="padding-right: 20px;padding-left:20px;border-radius:5px;">
+                        <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:22px;">
+                            @p.Title
+                        </div>
+                        <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:50px;">
+                            @p.Image
+                        </div>
+                        <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:100px;">
+                            <textarea cols="38" readonly style="resize:none;border-color:none; overflow: hidden;min-height: 100px;read"> @p.Text</textarea>
+
+                        </div>
+                        <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:20px;">
+                            @p.DateTime
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col" style="margin-left: -13px;margin-top:10px;">
+                                    <a class="nav-link active text-center border rounded" asp-area="" asp-controller="Articles" asp-action="Details" asp-route-id="1">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding-right: 20px;padding-left:20px"><div style="border: 1px solid #ccc; width: 295px;background-color:white">Text</div></td>
+                    <td style="padding-right: 20px;padding-left:20px"><div style="border: 1px solid #ccc; width: 295px;background-color:white">Cell 2</div></td>
+                </tr>
+                @*<tr style="background-color:rgb(255,216,216)">
+                <td style="padding-right: 20px;padding-left:20px">
+                    <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:300px;">
+                        @p.Title
+                    </div>
+                    <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:300px;">
+                        @p.Image
+                    </div>
+                    <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:300px;">
+                        @p.Text
+                    </div>
+                    <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:300px;">
+                        @p.DateTime - @p.Dislike - @p.Like
+                    </div>
+                </td>
+            </tr>*@
+            }
+            @*<tr style="background-color:rgb(255,216,216)">
+            <td style="padding-right: 20px;padding-left:20px;border-radius:5px;">
+                <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:22px;">
+                    кРАСОТА НАШИХ ДНЕЙ
+                </div>
+                <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:50px;">
+                    sfdf
+                </div>
+                <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:100px;">
+                    <textarea cols="38" readonly style="resize:none;border-color:none; overflow: hidden;min-height: 100px;read"> фффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффф.s</textarea>
+
+                </div>
+                <div style="border: 1px solid #ccc; width: 295px;background-color:white;height:20px;">
+                    12.12.2020- 20 - 60
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col" style="margin-left: -13px;margin-top:10px;">
+                            <a class="nav-link active text-center border rounded" asp-area="" asp-controller="Articles" asp-action="Details" asp-route-id="1">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td style="padding-right: 20px;padding-left:20px"><div style="border: 1px solid #ccc; width: 295px;background-color:white">Text</div></td>
+            <td style="padding-right: 20px;padding-left:20px"><div style="border: 1px solid #ccc; width: 295px;background-color:white">Cell 2</div></td>
+        </tr>*@
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>@ViewData["Title"] - Blog_project_</title>
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="~/assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="~/assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="~/assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="~/assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md" style="background-color: rgb(118,115,115);">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color: rgb(240,249,255)">Блог у Артёмки в хатке&nbsp;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+
+                <ul class="nav navbar-nav mx-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" style="color: rgb(240,249,255);">Главная</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="1" style="color: rgb(240,249,255);">Style</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="2" style="color: rgb(240,249,255);">Design</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="3" style="color: rgb(240,249,255);">Relationship</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" style="color: rgb(240,249,255);">О нас</a></li>
+                </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+    <p>@User.Identity.Name</p>
+
+                    <form method="post" asp-controller="Account" asp-action="Logout">
+                        <input type="submit" value="Выход" />
+                    </form> }
+                else
+                {
+    <a asp-controller="Account" asp-action="Login">Вход</a>
+                    <a asp-controller="Account" asp-action="Register">Регистрация</a>}
+            </div>
+        </div>
+    </nav>
+    <section style="height: 800px;background: linear-gradient(45deg, rgba(103, 0, 31, .8), rgba(34, 101, 163, .5)), url(https://html5book.ru/wp-content/uploads/2016/12/photo-8.jpg);background-size: cover;background-color: #d69999;">
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </section>
+    <div class="footer-basic" style="background-color: rgb(118,115,115);">
+        <footer>
+            <div class="social">
+                <a href="#"><i class="icon ion-social-instagram" style="color: rgb(240,249,255);"></i></a><a href="#"><i class="icon ion-social-snapchat" style="color: rgb(240,249,255);"></i></a><a href="#" style="color: rgb(240,249,255);"><i class="icon ion-social-twitter"></i></a>
+                <a href="#" style="color: rgb(240,249,255);"><i class="icon ion-social-facebook"></i></a>
+            </div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#" style="color: rgb(240,249,255);">Home</a></li>
+                <li class="list-inline-item"><a href="#" style="color: rgb(240,249,255);">Services</a></li>
+                <li class="list-inline-item"><a href="#" style="color: rgb(240,249,255);">About</a></li>
+                <li class="list-inline-item"><a href="#" style="color: rgb(240,249,255);">Terms</a></li>
+                <li class="list-inline-item"><a href="#" style="color: rgb(240,249,255);">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">Company Name © 2017</p>
+        </footer>
+    </div>
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
+
+
+
