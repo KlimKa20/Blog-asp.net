@@ -6,20 +6,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication4.Models
+namespace WebApplication4.Data
 {
     public class ApplicationContext : IdentityDbContext<Profile>
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            
+
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Tag>()
-        .HasMany(c => c.Articles)
-        .WithOne(e => e.Tag);
+                .HasMany(c => c.Articles)
+                .WithOne(e => e.Tag);
+            builder.Entity<Profile>()
+                .HasMany(c => c.Articles)
+                .WithOne(e => e.Profile);
+            builder.Entity<Profile>()
+                .HasMany(c => c.Comments)
+                .WithOne(e => e.Profile);
+            builder.Entity<Article>()
+                .HasMany(c => c.Comments)
+                .WithOne(e => e.Article);
             builder.Entity<Tag>().HasData(
             new Tag[]
             {

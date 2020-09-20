@@ -10,10 +10,7 @@ namespace blog_project.Models
         public int TagID { get; set; }
 
         public string TagName { get; set; }
-        public virtual ICollection<Article> Articles { get; set; }
-        public Tag()
-        {
-            Articles = new List<Article>();
-        }
+        public ICollection<Article> Articles { get; set; }
+        
     }
 }

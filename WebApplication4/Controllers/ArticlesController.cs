@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using blog_project.Models;
 using Microsoft.EntityFrameworkCore.Internal;
 using WebApplication4.Models;
+using WebApplication4.Data;
 
 namespace Blog_project_.Controllers
 {

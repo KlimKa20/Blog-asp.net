@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication4.Models;
+using WebApplication4.Data;
 
 namespace WebApplication4.Migrations
 {
@@ -304,6 +304,28 @@ namespace WebApplication4.Migrations
                     b.HasKey("TagID");
 
                     b.ToTable("Tags");
+
+                    b.HasData(
+                        new
+                        {
+                            TagID = 1,
+                            TagName = "Style"
+                        },
+                        new
+                        {
+                            TagID = 2,
+                            TagName = "Design"
+                        },
+                        new
+                        {
+                            TagID = 3,
+                            TagName = "Relationship"
+                        },
+                        new
+                        {
+                            TagID = 4,
+                            TagName = "Eat"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

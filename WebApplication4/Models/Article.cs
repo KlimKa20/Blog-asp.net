@@ -27,7 +27,7 @@ namespace blog_project.Models
         public string ProfileID { get; set; }
         public  Profile Profile { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
+        public  ICollection<Comment> Comments { get; set; }
         [DataType(DataType.Date)]
         public DateTime DateTime { get; set; }
 

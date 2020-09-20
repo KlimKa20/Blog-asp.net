@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication4.Models;
+using WebApplication4.Data;
 
 namespace WebApplication4.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200916123805_InitialCreate")]
+    [Migration("20200918160704_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -306,6 +306,28 @@ namespace WebApplication4.Migrations
                     b.HasKey("TagID");
 
                     b.ToTable("Tags");
+
+                    b.HasData(
+                        new
+                        {
+                            TagID = 1,
+                            TagName = "Style"
+                        },
+                        new
+                        {
+                            TagID = 2,
+                            TagName = "Design"
+                        },
+                        new
+                        {
+                            TagID = 3,
+                            TagName = "Relationship"
+                        },
+                        new
+                        {
+                            TagID = 4,
+                            TagName = "Eat"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -227,6 +227,17 @@ namespace WebApplication4.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Tags",
+                columns: new[] { "TagID", "TagName" },
+                values: new object[,]
+                {
+                    { 1, "Style" },
+                    { 2, "Design" },
+                    { 3, "Relationship" },
+                    { 4, "Eat" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_ProfileID",
                 table: "Articles",

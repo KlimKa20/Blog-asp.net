@@ -8,7 +8,7 @@ namespace blog_project.Models
 {
     public class Profile : IdentityUser
     {
-        public virtual ICollection<Article> Articles { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
+        public  ICollection<Article> Articles { get; set; }
+        public  ICollection<Comment> Comments { get; set; }
     }
 }
