@@ -31,8 +31,8 @@ namespace WebApplication4
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<Profile, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationContext>();
-
+                .AddEntityFrameworkStores<ApplicationContext>()
+                .AddDefaultTokenProviders();
             services.AddControllersWithViews();
 
         }
