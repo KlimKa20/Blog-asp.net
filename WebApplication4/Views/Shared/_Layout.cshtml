@@ -20,23 +20,25 @@
             <div class="collapse navbar-collapse" id="navcol-1">
 
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" style="color: rgb(240,249,255);">Главная</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="" style="color: rgb(240,249,255);">Главная</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="1" style="color: rgb(240,249,255);">Style</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="2" style="color: rgb(240,249,255);">Design</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="3" style="color: rgb(240,249,255);">Relationship</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" style="color: rgb(240,249,255);">О нас</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Articles" asp-action="Create" style="color: rgb(240,249,255);">Create New</a></li>
                 </ul>
                 @if (User.Identity.IsAuthenticated)
                 {
-    <p>@User.Identity.Name</p>
-
-                    <form method="post" asp-controller="Account" asp-action="Logout">
-                        <input type="submit" value="Выход" />
-                    </form> }
-                else
-                {
-    <a asp-controller="Account" asp-action="Login">Вход</a>
-                    <a asp-controller="Account" asp-action="Register">Регистрация</a>}
+                    <p style="padding-top: 15px; padding-right: 33px;">@User.Identity.Name</p>
+                                    <form method="post" asp-controller="Account" asp-action="Logout">
+                                        <input type="submit" value="Выход" />
+                                    </form> 
+                 }
+                 else
+                 {
+                    <a asp-controller="Account" asp-action="Login">Вход</a>
+                    <a asp-controller="Account" asp-action="Register">Регистрация</a>
+                 }
             </div>
         </div>
     </nav>

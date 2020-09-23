@@ -17,6 +17,7 @@ namespace WebApplication4.Data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
             builder.Entity<Tag>()
                 .HasMany(c => c.Articles)
                 .WithOne(e => e.Tag);

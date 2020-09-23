@@ -35,17 +35,9 @@ namespace WebApplication4.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.Action(
-                        "ConfirmEmail",
-                        "Account",
-                        new { userId = user.Id, code = code },
-                        protocol: HttpContext.Request.Scheme);
-                    EmailService emailService = new EmailService();
-                    await emailService.SendEmailAsync(model.Email, "Confirm your account",
-                        $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
-
-                    return Content("Для завершения регистрации проверьте электронную почту");
+                    // установка куки
+                    await _signInManager.SignInAsync(user, false);
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -54,6 +46,27 @@ namespace WebApplication4.Controllers
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
                 }
+                //if (result.Succeeded)
+                //{
+                //    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                //    var callbackUrl = Url.Action(
+                //        "ConfirmEmail",
+                //        "Account",
+                //        new { userId = user.Id, code = code },
+                //        protocol: HttpContext.Request.Scheme);
+                //    EmailService emailService = new EmailService();
+                //    await emailService.SendEmailAsync(model.Email, "Confirm your account",
+                //        $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
+
+                //    return Content("Для завершения регистрации проверьте электронную почту");
+                //}
+                //else
+                //{
+                //    foreach (var error in result.Errors)
+                //    {
+                //        ModelState.AddModelError(string.Empty, error.Description);
+                //    }
+                //}
             }
             return View(model);
         }
@@ -88,15 +101,15 @@ namespace WebApplication4.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByNameAsync(model.UserName);
-                if (user != null)
-                {
-                    if (!await _userManager.IsEmailConfirmedAsync(user))
-                    {
-                        ModelState.AddModelError(string.Empty, "Вы не подтвердили свой email");
-                        return View(model);
-                    }
-                }
+                //var user = await _userManager.FindByNameAsync(model.UserName);
+                //if (user != null)
+                //{
+                //    if (!await _userManager.IsEmailConfirmedAsync(user))
+                //    {
+                //        ModelState.AddModelError(string.Empty, "Вы не подтвердили свой email");
+                //        return View(model);
+                //    }
+                //}
                 var result =
                     await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
                 if (result.Succeeded)

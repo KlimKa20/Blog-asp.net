@@ -5,21 +5,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Hosting;
 using blog_project.Models;
 using Microsoft.EntityFrameworkCore.Internal;
 using WebApplication4.Models;
 using WebApplication4.Data;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Blog_project_.Controllers
 {
     public class ArticlesController : Controller
     {
         private readonly ApplicationContext _context;
-
-        public ArticlesController(ApplicationContext context)
+        private readonly IWebHostEnvironment _appEnvironment;
+        public ArticlesController(ApplicationContext context, IWebHostEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
 
         // GET: Articles
@@ -47,6 +51,7 @@ namespace Blog_project_.Controllers
         }
 
         // GET: Articles/Create
+        [Authorize]
         public IActionResult Create()
         {
             //_context.Articles
@@ -64,12 +69,32 @@ namespace Blog_project_.Controllers
         //,Image
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Text,TagID,Like,Dislike")] Article article)
+        public async Task<IActionResult> Create([Bind("Id,Title,Text,TagID,Like,Dislike")] Article article, IFormFile uploadedFile)
         {
             if (ModelState.IsValid)
             {
+                if (uploadedFile != null)
+                {
+                    //byte[] imageData = null;
+                    //// считываем переданный файл в массив байтов
+                    //using (var binaryReader = new BinaryReader(uploadedFile.OpenReadStream()))
+                    //{
+                    //    imageData = binaryReader.ReadBytes((int)uploadedFile.Length);
+                    //}
+                    //article.Image = imageData;
+                    //_context.SaveChanges();
+                    // путь к папке Files
+                    string path = "/Files/" + uploadedFile.FileName;
+                    // сохраняем файл в папку Files в каталоге wwwroot
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        await uploadedFile.CopyToAsync(fileStream);
+                    }
+                    article.Image = path;
+                    _context.SaveChanges();
+                }
                 article.DateTime = DateTime.Now;
-                article.Tag =  await _context.Tags.FindAsync(article.TagID);
+                article.Tag = await _context.Tags.FindAsync(article.TagID);
                 _context.Add(article);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

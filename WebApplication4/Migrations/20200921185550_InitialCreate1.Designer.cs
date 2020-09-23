@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication4.Data;
 
 namespace WebApplication4.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20200921185550_InitialCreate1")]
+    partial class InitialCreate1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,10 +165,13 @@ namespace WebApplication4.Migrations
                     b.Property<int>("Dislike")
                         .HasColumnType("int");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("Like")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PictureID")
                         .HasColumnType("int");
 
                     b.Property<string>("ProfileID")
@@ -184,6 +189,9 @@ namespace WebApplication4.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ArticleID");
+
+                    b.HasIndex("PictureID")
+                        .IsUnique();
 
                     b.HasIndex("ProfileID");
 
@@ -233,9 +241,6 @@ namespace WebApplication4.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ArticleID")
-                        .HasColumnType("int");
-
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");
 
@@ -243,8 +248,6 @@ namespace WebApplication4.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ArticleID");
 
                     b.ToTable("Pictures");
                 });
@@ -404,6 +407,12 @@ namespace WebApplication4.Migrations
 
             modelBuilder.Entity("blog_project.Models.Article", b =>
                 {
+                    b.HasOne("blog_project.Models.Picture", "Picture")
+                        .WithOne("Article")
+                        .HasForeignKey("blog_project.Models.Article", "PictureID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("blog_project.Models.Profile", "Profile")
                         .WithMany("Articles")
                         .HasForeignKey("ProfileID");
@@ -426,13 +435,6 @@ namespace WebApplication4.Migrations
                     b.HasOne("blog_project.Models.Profile", "Profile")
                         .WithMany("Comments")
                         .HasForeignKey("ProfileID");
-                });
-
-            modelBuilder.Entity("blog_project.Models.Picture", b =>
-                {
-                    b.HasOne("blog_project.Models.Article", "Article")
-                        .WithMany()
-                        .HasForeignKey("ArticleID");
                 });
 #pragma warning restore 612, 618
         }
