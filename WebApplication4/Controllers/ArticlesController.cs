@@ -13,26 +13,27 @@ using WebApplication4.Data;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Blog_project_.Controllers
 {
     public class ArticlesController : Controller
     {
+        private readonly UserManager<Profile> _userManager;
         private readonly ApplicationContext _context;
         private readonly IWebHostEnvironment _appEnvironment;
-        public ArticlesController(ApplicationContext context, IWebHostEnvironment appEnvironment)
+        public ArticlesController(UserManager<Profile> userManager, ApplicationContext context, IWebHostEnvironment appEnvironment)
         {
+            _userManager = userManager;
             _context = context;
             _appEnvironment = appEnvironment;
         }
 
-        // GET: Articles
         public async Task<IActionResult> Index()
         {
             return View(await _context.Articles.ToListAsync());
         }
 
-        // GET: Articles/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,10 +48,16 @@ namespace Blog_project_.Controllers
                 return NotFound();
             }
 
+            var user = await _userManager.FindByIdAsync(article.ProfileID);
+            if (user==null)
+            {
+                return NotFound();
+            }
+            ViewData["UserName"] = user.UserName;
+            ViewData["Comment"] = _context.Comments.Include(s=>s.Article).Where(s => s.ArticleID == article.ArticleID).ToList() ;
             return View(article);
         }
 
-        // GET: Articles/Create
         [Authorize]
         public IActionResult Create()
         {
@@ -63,13 +70,9 @@ namespace Blog_project_.Controllers
             return View();
         }
 
-        // POST: Articles/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //,Image
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Text,TagID,Like,Dislike")] Article article, IFormFile uploadedFile)
+        public async Task<IActionResult> Create([Bind("Id,Title,Text,TagID")] Article article, IFormFile uploadedFile)
         {
             if (ModelState.IsValid)
             {
@@ -83,9 +86,7 @@ namespace Blog_project_.Controllers
                     //}
                     //article.Image = imageData;
                     //_context.SaveChanges();
-                    // путь к папке Files
                     string path = "/Files/" + uploadedFile.FileName;
-                    // сохраняем файл в папку Files в каталоге wwwroot
                     using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                     {
                         await uploadedFile.CopyToAsync(fileStream);
@@ -93,6 +94,8 @@ namespace Blog_project_.Controllers
                     article.Image = path;
                     _context.SaveChanges();
                 }
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                article.Profile= user;
                 article.DateTime = DateTime.Now;
                 article.Tag = await _context.Tags.FindAsync(article.TagID);
                 _context.Add(article);
@@ -102,9 +105,27 @@ namespace Blog_project_.Controllers
             return View(article);
         }
 
-        // GET: Articles/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateComment([Bind("ArticleID,Text")] Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+               
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                comment.Profile = user;
+                comment.DateTime = DateTime.Now;
+                _context.Add(comment);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(comment);
+        }
+
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -115,15 +136,17 @@ namespace Blog_project_.Controllers
             {
                 return NotFound();
             }
-            return View(article);
+            var user = await _userManager.FindByIdAsync(article.ProfileID);
+            if (User.Identity.Name.ToString() == user.UserName || User.IsInRole("admin"))
+            {
+                return View(article);
+            }
+            return NotFound();
         }
 
-        // POST: Articles/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Text,Image,DateTime,Like,Dislike")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Text,Image")] Article article)
         {
             if (id != article.ArticleID)
             {
@@ -153,7 +176,6 @@ namespace Blog_project_.Controllers
             return View(article);
         }
 
-        // GET: Articles/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -171,7 +193,7 @@ namespace Blog_project_.Controllers
             return View(article);
         }
 
-        // POST: Articles/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

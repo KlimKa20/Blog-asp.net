@@ -12,7 +12,6 @@ using WebApplication4.Models;
 
 namespace WebApplication4.Controllers
 {
-    //[Authorize(Roles = "admin")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

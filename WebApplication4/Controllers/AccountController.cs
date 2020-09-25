@@ -33,32 +33,11 @@ namespace WebApplication4.Controllers
             {
                 Profile user = new Profile { Email = model.Email, UserName = model.UserName };
                 var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    // установка куки
-                    await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
-                }
                 //if (result.Succeeded)
                 //{
-                //    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                //    var callbackUrl = Url.Action(
-                //        "ConfirmEmail",
-                //        "Account",
-                //        new { userId = user.Id, code = code },
-                //        protocol: HttpContext.Request.Scheme);
-                //    EmailService emailService = new EmailService();
-                //    await emailService.SendEmailAsync(model.Email, "Confirm your account",
-                //        $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
-
-                //    return Content("Для завершения регистрации проверьте электронную почту");
+                //    // установка куки
+                //    await _signInManager.SignInAsync(user, false);
+                //    return RedirectToAction("Index", "Home");
                 //}
                 //else
                 //{
@@ -67,6 +46,27 @@ namespace WebApplication4.Controllers
                 //        ModelState.AddModelError(string.Empty, error.Description);
                 //    }
                 //}
+                if (result.Succeeded)
+                {
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.Action(
+                        "ConfirmEmail",
+                        "Account",
+                        new { userId = user.Id, code = code },
+                        protocol: HttpContext.Request.Scheme);
+                    EmailService emailService = new EmailService();
+                    await emailService.SendEmailAsync(model.Email, "Confirm your account",
+                        $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
+
+                    return Content("Для завершения регистрации проверьте электронную почту");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
             }
             return View(model);
         }
@@ -155,7 +155,7 @@ namespace WebApplication4.Controllers
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                 EmailService emailService = new EmailService();
                 await emailService.SendEmailAsync(model.Email, "Reset Password",
-                    $"Для сброса пароля пройдите по ссылке: <a href='{callbackUrl}'>link</a>");
+                    $"Для сброса пароля пройдите по ссылке: <a href='{callbackUrl}'>сброс</a>");
                 return View("ForgotPasswordConfirmation");
             }
             return View(model);
