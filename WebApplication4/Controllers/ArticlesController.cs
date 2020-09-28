@@ -29,10 +29,10 @@ namespace Blog_project_.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Articles.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Articles.ToListAsync());
+        //}
 
         public async Task<IActionResult> Details(int? id)
         {
@@ -54,7 +54,15 @@ namespace Blog_project_.Controllers
                 return NotFound();
             }
             ViewData["UserName"] = user.UserName;
-            ViewData["Comment"] = _context.Comments.Include(s=>s.Article).Where(s => s.ArticleID == article.ArticleID).ToList() ;
+            List<Comment> comments = new List<Comment>();
+            foreach (var item in _context.Comments.Include(s => s.Article).Where(s => s.ArticleID == article.ArticleID).ToList())
+            {
+                item.Profile = await _userManager.FindByIdAsync(item.ProfileID);
+                comments.Add(item);
+            }
+
+            ViewData["Comment"] = comments;
+
             return View(article);
         }
 
@@ -72,7 +80,7 @@ namespace Blog_project_.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Text,TagID")] Article article, IFormFile uploadedFile)
+        public async Task<IActionResult> Create([Bind("ArticleID,Title,Text,TagID")] Article article, IFormFile uploadedFile)
         {
             if (ModelState.IsValid)
             {
@@ -100,27 +108,29 @@ namespace Blog_project_.Controllers
                 article.Tag = await _context.Tags.FindAsync(article.TagID);
                 _context.Add(article);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectPermanent("~/Home/Index");
+                //return RedirectToAction(nameof(Index));
             }
             return View(article);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateComment([Bind("ArticleID,Text")] Comment comment)
-        {
-            if (ModelState.IsValid)
-            {
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> CreateComment([Bind("ArticleID,Text")] Comment comment)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
                
-                var user = await _userManager.FindByNameAsync(User.Identity.Name);
-                comment.Profile = user;
-                comment.DateTime = DateTime.Now;
-                _context.Add(comment);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(comment);
-        }
+        //        var user = await _userManager.FindByNameAsync(User.Identity.Name);
+        //        comment.Profile = user;
+        //        comment.DateTime = DateTime.Now;
+        //        _context.Add(comment);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectPermanent($"~/Articles/Details/{comment.ArticleID}");
+        //        //return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(comment);
+        //}
 
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
@@ -146,18 +156,32 @@ namespace Blog_project_.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Text,Image")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("ArticleID,Title,Text")] Article article, IFormFile uploadedFile)
         {
+
             if (id != article.ArticleID)
             {
                 return NotFound();
             }
-
+            Article article1 = await _context.Articles.FindAsync(article.ArticleID);
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(article);
+                    if (article.Text != article1.Text && article1 != null)
+                        article1.Text = article.Text;
+                    if (article.Title != article1.Title && article1 != null)
+                        article1.Title = article.Title;
+                    if (article.Image != article1.Image && article != null)
+                    {
+                        string path = "/Files/" + uploadedFile.FileName;
+                        using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                        {
+                            await uploadedFile.CopyToAsync(fileStream);
+                        }
+                        article1.Image = path;
+                    }
+                    _context.Update(article1);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -171,7 +195,8 @@ namespace Blog_project_.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectPermanent("~/Home/Index");
+                //return RedirectToAction(nameof(Index));
             }
             return View(article);
         }
@@ -201,7 +226,8 @@ namespace Blog_project_.Controllers
             var article = await _context.Articles.FindAsync(id);
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectPermanent("~/Home/Index");
+            //return RedirectToAction(nameof(Index));
         }
 
         private bool ArticleExists(int id)

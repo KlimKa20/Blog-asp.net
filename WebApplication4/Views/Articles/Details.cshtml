@@ -42,39 +42,40 @@
             @Html.DisplayFor(model => model.Dislike)
         </dd>
         <dd>
-            <form asp-action="CreateComment" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <input type="hidden" asp-for="ArticleID" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Text comment</label>
-                    <input type="text" class="form-control" style="height:auto;" />
-                    <span asp-validation-for="Text" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-            </form>
+            <div class="form-group">
+                <input type="hidden" asp-for="@Model.ArticleID" class="form-control" id="ArticleInput" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Text comment</label>
+                <input asp-for="Text" type="text" class="form-control" style="height:auto;" value=" " id="TextInput" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" id="sendButton" />
+            </div>
+
         </dd>
 
     </dl>
-    <div style="height:300px;background-color:white">
+    <ul style="min-height:300px;height:auto;background-color:white" id="messagesList">
         @foreach (var item in ViewData["Comment"] as IList<blog_project.Models.Comment>)
         {
-            <p>Логин:@item.Profile.UserName</p>
-            <p>Коментарий:@item.Text</p>
-            <p>Дата:@item.DateTime</p>
-            <br />
+            <li>
+                <p>Логин:@item.Profile.UserName</p>
+                <p>Коментарий:@item.Text</p>
+                <p>Дата:@item.DateTime</p>
+                <br />
+            </li>
         }
-    </div>
+    </ul>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
     <div>
         @if (User.IsInRole("admin") || ViewData["UserName"] as string == User.Identity.Name)
         {
             <a asp-action="Edit" asp-route-id="@Model.ArticleID">Edit</a>
 
         }
-        <a asp-action="Index">Back to List</a>
+        @*<a asp-action="Index">Back to List</a>*@
     </div>
 </div>
 

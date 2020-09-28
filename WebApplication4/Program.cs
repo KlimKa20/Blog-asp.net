@@ -12,15 +12,15 @@ using Microsoft.Extensions.Logging;
 using WebApplication4.Models;
 using WebApplication4.Data;
 
-
 namespace WebApplication4
 {
     public class Program
     {
         public static async Task Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
 
+            var host = CreateHostBuilder(args).Build();
+          
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
