@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using blog_project.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,8 +29,10 @@ namespace WebApplication4.Controllers
         {
             if (id != null)
             {
+
+                List<Article> articles = await _context.Articles.Where(e => e.Tag.TagID == id).ToListAsync();
                 ViewData["Tags"] = _context.Tags.FindAsync(id).Result.TagName;
-                return View(await _context.Articles.Where(e => e.Tag.TagID == id).ToListAsync());
+                return View(articles);
             }
             ViewData["Tags"] = "Все статьи";
             return View(await _context.Articles.ToListAsync());
@@ -44,6 +47,36 @@ namespace WebApplication4.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [Authorize]
+        public async Task<IActionResult> UserArticle(string? UserName)
+        {
+            List<Article> articles;
+            if (UserName == null)
+            {
+                articles = await _context.Articles.Where(e => e.Profile.UserName == User.Identity.Name).ToListAsync();
+            }
+            else
+            {
+                articles = await _context.Articles.Where(e => e.Profile.UserName == UserName).ToListAsync();
+            }
+            if (articles.Count == 0)
+            {
+                ViewData["Tags"] = "Нет статей";
+            }
+            else
+            {
+                ViewData["Tags"] = "Статьи";
+            }
+            return View("Index", await _context.Articles.Where(e => e.Profile.UserName == UserName).ToListAsync());
+        }
+
+
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> AdminPage(string? UserName)
+        {
+            return View(await _context.Profiles.Where(e => e.UserName != "admin").ToListAsync());
         }
     }
 }

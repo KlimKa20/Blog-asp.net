@@ -11,16 +11,19 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebApplication4.Models;
 using WebApplication4.Data;
+using NLog.Web;
+using NLog;
 
 namespace WebApplication4
 {
     public class Program
     {
+        [STAThread]
         public static async Task Main(string[] args)
         {
-
             var host = CreateHostBuilder(args).Build();
-          
+            
+            
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -32,8 +35,8 @@ namespace WebApplication4
                 }
                 catch (Exception ex)
                 {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred while seeding the database.");
+                    //var logger = services.GetRequiredService<ILogger<Program>>();
+                    //logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
 

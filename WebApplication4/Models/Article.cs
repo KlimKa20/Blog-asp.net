@@ -19,7 +19,6 @@ namespace blog_project.Models
         [Required(ErrorMessage = "Заполните содержимое блога")]
         public string Text { get; set; }
 
-        //public byte[] Image { get; set; }
         public string Image { get; set; }
 
         public int TagID { get; set; }

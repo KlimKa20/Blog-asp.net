@@ -1,0 +1,27 @@
+﻿@model IEnumerable<blog_project.Models.Profile>
+@{
+    ViewData["Title"] = "Страница Админимтратора";
+}
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col" style="margin-top: 50px;">
+                <h4 class="text-center border rounded" style="background-color:white">Пользователи</h4>
+            </div>
+        </div>
+    </div>
+    <ul style="min-height:100px;height:auto;background-color:rgb(255,216,216)">
+
+        @foreach (var item in Model)
+        {
+            <form method="post" asp-controller="Home" asp-action="UserArticle">
+                <li>
+                    <input type="hidden" name="UserName" value="@item.UserName" />
+                    <input type="submit" value="@item.UserName" /a>
+                </li>
+            </form>
+        }
+
+    </ul>
+
+</div>

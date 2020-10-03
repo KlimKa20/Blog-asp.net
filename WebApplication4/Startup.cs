@@ -14,11 +14,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebApplication4.Data;
 using WebApplication4.HubS;
+using WebApplication4.Service;
 
 namespace WebApplication4
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -38,6 +40,7 @@ namespace WebApplication4
                 .AddDefaultTokenProviders();
             services.AddControllersWithViews();
 
+            services.AddTransient<EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

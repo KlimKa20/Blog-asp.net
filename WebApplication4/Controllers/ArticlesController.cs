@@ -29,11 +29,6 @@ namespace Blog_project_.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await _context.Articles.ToListAsync());
-        //}
-
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,7 +43,7 @@ namespace Blog_project_.Controllers
                 return NotFound();
             }
 
-            var user = await _userManager.FindByIdAsync(article.ProfileID);
+            var user = await _context.Profiles.FindAsync(article.ProfileID);
             if (user==null)
             {
                 return NotFound();
@@ -57,7 +52,7 @@ namespace Blog_project_.Controllers
             List<Comment> comments = new List<Comment>();
             foreach (var item in _context.Comments.Include(s => s.Article).Where(s => s.ArticleID == article.ArticleID).ToList())
             {
-                item.Profile = await _userManager.FindByIdAsync(item.ProfileID);
+                item.Profile = await _context.Profiles.FindAsync(item.ProfileID);
                 comments.Add(item);
             }
 
@@ -69,9 +64,6 @@ namespace Blog_project_.Controllers
         [Authorize]
         public IActionResult Create()
         {
-            //_context.Articles
-            //    .Where(s => s.TagID==2)
-            //    .Include("Profile")
             SelectList tags = new SelectList(_context.Tags, "TagID", "TagName");
             ViewBag.Tags = tags;
             ViewData["tags"] = _context.Tags.ToList();
@@ -109,28 +101,9 @@ namespace Blog_project_.Controllers
                 _context.Add(article);
                 await _context.SaveChangesAsync();
                 return RedirectPermanent("~/Home/Index");
-                //return RedirectToAction(nameof(Index));
             }
             return View(article);
         }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> CreateComment([Bind("ArticleID,Text")] Comment comment)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-               
-        //        var user = await _userManager.FindByNameAsync(User.Identity.Name);
-        //        comment.Profile = user;
-        //        comment.DateTime = DateTime.Now;
-        //        _context.Add(comment);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectPermanent($"~/Articles/Details/{comment.ArticleID}");
-        //        //return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(comment);
-        //}
 
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
@@ -196,7 +169,6 @@ namespace Blog_project_.Controllers
                     }
                 }
                 return RedirectPermanent("~/Home/Index");
-                //return RedirectToAction(nameof(Index));
             }
             return View(article);
         }
@@ -227,7 +199,6 @@ namespace Blog_project_.Controllers
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
             return RedirectPermanent("~/Home/Index");
-            //return RedirectToAction(nameof(Index));
         }
 
         private bool ArticleExists(int id)
