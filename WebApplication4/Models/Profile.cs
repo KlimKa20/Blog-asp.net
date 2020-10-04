@@ -10,5 +10,7 @@ namespace blog_project.Models
     {
         public  ICollection<Article> Articles { get; set; }
         public  ICollection<Comment> Comments { get; set; }
+
+        public bool isBlocked { get; set; }
     }
 }

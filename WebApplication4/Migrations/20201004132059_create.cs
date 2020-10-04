@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication4.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class create : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,7 +39,8 @@ namespace WebApplication4.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    isBlocked = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -173,7 +174,7 @@ namespace WebApplication4.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: false),
                     Text = table.Column<string>(nullable: false),
-                    Image = table.Column<byte[]>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
                     TagID = table.Column<int>(nullable: false),
                     ProfileID = table.Column<string>(nullable: true),
                     DateTime = table.Column<DateTime>(nullable: false),

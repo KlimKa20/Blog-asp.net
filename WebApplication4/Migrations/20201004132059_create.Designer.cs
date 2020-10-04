@@ -10,8 +10,8 @@ using WebApplication4.Data;
 namespace WebApplication4.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200921185550_InitialCreate1")]
-    partial class InitialCreate1
+    [Migration("20201004132059_create")]
+    partial class create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -165,13 +165,10 @@ namespace WebApplication4.Migrations
                     b.Property<int>("Dislike")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Like")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PictureID")
                         .HasColumnType("int");
 
                     b.Property<string>("ProfileID")
@@ -189,9 +186,6 @@ namespace WebApplication4.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ArticleID");
-
-                    b.HasIndex("PictureID")
-                        .IsUnique();
 
                     b.HasIndex("ProfileID");
 
@@ -232,24 +226,6 @@ namespace WebApplication4.Migrations
                     b.HasIndex("ProfileID");
 
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("blog_project.Models.Picture", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Pictures");
                 });
 
             modelBuilder.Entity("blog_project.Models.Profile", b =>
@@ -303,6 +279,9 @@ namespace WebApplication4.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
+
+                    b.Property<bool>("isBlocked")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -407,12 +386,6 @@ namespace WebApplication4.Migrations
 
             modelBuilder.Entity("blog_project.Models.Article", b =>
                 {
-                    b.HasOne("blog_project.Models.Picture", "Picture")
-                        .WithOne("Article")
-                        .HasForeignKey("blog_project.Models.Article", "PictureID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("blog_project.Models.Profile", "Profile")
                         .WithMany("Articles")
                         .HasForeignKey("ProfileID");

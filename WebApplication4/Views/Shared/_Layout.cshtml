@@ -29,25 +29,43 @@
                 </ul>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    if(User.IsInRole("admin"))
-                    {
-                        <a asp-controller="Home" asp-action="AdminPage">Личный кабинет</a>
-                    }
-                    else
-                    {
-                        <a asp-controller="Home" asp-action="UserArticle">Личный кабинет</a>
-                    }
-                    
-                    <p style="padding-top: 15px; padding-right: 33px;">@User.Identity.Name</p>
-                    <form method="post" asp-controller="Account" asp-action="Logout">
-                        <input type="submit" value="Выход" />
-                    </form> 
-                 }
-                 else
-                 {
-                    <a asp-controller="Account" asp-action="Login">Вход  </a>
-                    <a asp-controller="Account" asp-action="Register">Регистрация</a>
-                 }
+                    <table>
+                        <tr>
+                            <th style="padding-right:20px;">
+
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <a style="color:rgb(240,249,255);" asp-controller="Home" asp-action="AdminPage">Личный кабинет</a>
+                                }
+                                else
+                                {
+                                    <a style="color:rgb(240,249,255);" asp-controller="Home" asp-action="UserArticle">Личный кабинет</a>
+                                }
+                            </th>
+                            <th style="padding-right:20px;">
+                                <p style="color:rgb(240,249,255);padding-top: 15px; padding-right: 33px;">@User.Identity.Name</p>
+                            </th>
+
+                            <th>
+                                <form method="post" asp-controller="Account" asp-action="Logout">
+                                    <input type="submit" value="Выход" />
+                                </form>
+                            </th>
+                        </tr>
+                    </table> 
+            }
+                else
+                {
+    <table>
+        <tr>
+            <th style="padding-right:20px;">
+                <a style="color:rgb(240,249,255);" asp-controller="Account" asp-action="Login">Вход  </a>
+            </th>
+            <th>
+                <a style="color:rgb(240,249,255);" asp-controller="Account" asp-action="Register">Регистрация</a>
+            </th>
+        </tr>
+    </table>}
             </div>
         </div>
     </nav>

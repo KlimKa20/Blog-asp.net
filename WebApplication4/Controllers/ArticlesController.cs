@@ -62,12 +62,21 @@ namespace Blog_project_.Controllers
         }
 
         [Authorize]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            SelectList tags = new SelectList(_context.Tags, "TagID", "TagName");
-            ViewBag.Tags = tags;
-            ViewData["tags"] = _context.Tags.ToList();
-            return View();
+            var profile = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (!profile.isBlocked)
+            {
+                SelectList tags = new SelectList(_context.Tags, "TagID", "TagName");
+                ViewBag.Tags = tags;
+                ViewData["tags"] = _context.Tags.ToList();
+                return View();
+            }
+            else
+            {
+                ViewData["Text"] = "Ваша страница заблокирована администратором";
+                return View("~/Views/Shared/TextPage.cshtml");
+            }
         }
 
         [HttpPost]

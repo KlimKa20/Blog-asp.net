@@ -32,7 +32,7 @@ namespace WebApplication4.Controllers
         {
             if (ModelState.IsValid)
             {
-                Profile user = new Profile { Email = model.Email, UserName = model.UserName };
+                Profile user = new Profile { Email = model.Email, UserName = model.UserName ,isBlocked = false};
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -45,7 +45,8 @@ namespace WebApplication4.Controllers
                     await _emailService.SendEmailAsync(model.Email, "Confirm your account",
                         $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
 
-                    return Content("Для завершения регистрации проверьте электронную почту");
+                    ViewData["Text"] = "Для завершения регистрации проверьте электронную почту";
+                    return View("~/Views/Shared/TextPage.cshtml");
                 }
                 else
                 {

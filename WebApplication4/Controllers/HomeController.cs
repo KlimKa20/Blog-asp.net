@@ -29,7 +29,6 @@ namespace WebApplication4.Controllers
         {
             if (id != null)
             {
-
                 List<Article> articles = await _context.Articles.Where(e => e.Tag.TagID == id).ToListAsync();
                 ViewData["Tags"] = _context.Tags.FindAsync(id).Result.TagName;
                 return View(articles);
@@ -69,9 +68,25 @@ namespace WebApplication4.Controllers
             {
                 ViewData["Tags"] = "Статьи";
             }
-            return View("Index", await _context.Articles.Where(e => e.Profile.UserName == UserName).ToListAsync());
+            return View("Index",articles);
         }
 
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> UserBlocked(string? UserName)
+        {
+            var profile = await _context.Profiles.Where(e => e.UserName == UserName).ToListAsync();
+            if (profile[0].isBlocked)
+            {
+                profile[0].isBlocked = false;
+            }
+            else
+            {
+                profile[0].isBlocked = true;
+            }
+            _context.Update(profile[0]);
+            await _context.SaveChangesAsync();
+            return View("AdminPage", await _context.Profiles.Where(e => e.UserName != "admin").ToListAsync());
+        }
 
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> AdminPage(string? UserName)

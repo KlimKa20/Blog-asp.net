@@ -226,29 +226,6 @@ namespace WebApplication4.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("blog_project.Models.Picture", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ArticleID")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleID");
-
-                    b.ToTable("Pictures");
-                });
-
             modelBuilder.Entity("blog_project.Models.Profile", b =>
                 {
                     b.Property<string>("Id")
@@ -300,6 +277,9 @@ namespace WebApplication4.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
+
+                    b.Property<bool>("isBlocked")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -426,13 +406,6 @@ namespace WebApplication4.Migrations
                     b.HasOne("blog_project.Models.Profile", "Profile")
                         .WithMany("Comments")
                         .HasForeignKey("ProfileID");
-                });
-
-            modelBuilder.Entity("blog_project.Models.Picture", b =>
-                {
-                    b.HasOne("blog_project.Models.Article", "Article")
-                        .WithMany()
-                        .HasForeignKey("ArticleID");
                 });
 #pragma warning restore 612, 618
         }
