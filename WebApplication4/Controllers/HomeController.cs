@@ -29,6 +29,8 @@ namespace WebApplication4.Controllers
         {
             if (id != null)
             {
+                int x = 0;
+                int y = 1 / x;
                 List<Article> articles = await _context.Articles.Where(e => e.Tag.TagID == id).ToListAsync();
                 ViewData["Tags"] = _context.Tags.FindAsync(id).Result.TagName;
                 return View(articles);
@@ -40,12 +42,6 @@ namespace WebApplication4.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         [Authorize]
