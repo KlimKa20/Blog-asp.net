@@ -6,6 +6,7 @@ using blog_project.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using WebApplication4.Service;
 using WebApplication4.ViewModels;
 
@@ -13,11 +14,13 @@ namespace WebApplication4.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly ILogger<AccountController> _logger;
         private readonly UserManager<Profile> _userManager;
         private readonly SignInManager<Profile> _signInManager;
         private readonly EmailService _emailService;
-        public AccountController(UserManager<Profile> userManager, SignInManager<Profile> signInManager, EmailService emailService)
+        public AccountController(UserManager<Profile> userManager, SignInManager<Profile> signInManager, EmailService emailService, ILogger<AccountController> logger)
         {
+            _logger = logger;
             _emailService = emailService;
             _userManager = userManager;
             _signInManager = signInManager;
@@ -64,18 +67,23 @@ namespace WebApplication4.Controllers
         {
             if (userId == null || code == null)
             {
-                return View("Error");
+                _logger.LogError("Doesn't exist id or code. Controller:Account. Action:ConfirmEmail");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return View("Error");
+                _logger.LogError("Doesn't exist user. Controller:Account. Action:ConfirmEmail");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
             if (result.Succeeded)
                 return RedirectToAction("Index", "Home");
             else
-                return View("Error");
+            {
+                _logger.LogError("Doesn't succesed. Controller:Account. Action:ConfirmEmail");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
+            }
         }
         [HttpGet]
         public IActionResult Login(string returnUrl = null)

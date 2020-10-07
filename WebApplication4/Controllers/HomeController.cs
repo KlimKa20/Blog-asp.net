@@ -27,11 +27,20 @@ namespace WebApplication4.Controllers
 
         public async Task<IActionResult> Index(int? id)
         {
+            int x = 0;
             if (id != null)
             {
-                int x = 0;
-                int y = 1 / x;
-                List<Article> articles = await _context.Articles.Where(e => e.Tag.TagID == id).ToListAsync();
+                List<Article> articles;
+                try
+                {
+                    articles = await _context.Articles.Where(e => e.Tag.TagID == id).ToListAsync();
+                }
+                catch (Exception)
+                {
+                    _logger.LogError("Doesn't exist id. Controller:Home. Action:Index");
+                    return RedirectPermanent("~/Error/Index?statusCode=404");
+                }
+                
                 ViewData["Tags"] = _context.Tags.FindAsync(id).Result.TagName;
                 return View(articles);
             }

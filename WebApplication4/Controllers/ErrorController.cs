@@ -4,15 +4,24 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using WebApplication4.Models;
 
 namespace WebApplication4.Controllers
 {
     public class Error : Controller
     {
+        private readonly ILogger<Error> _logger;
+
+        public Error(ILogger<Error> logger)
+        {
+            _logger = logger;
+        }
+
         public IActionResult Index(int? statusCode = null)
         {
             ViewData["Error"] = statusCode;
+            _logger.LogError($"Error. Status code {statusCode}"); 
             return View();
         }
 

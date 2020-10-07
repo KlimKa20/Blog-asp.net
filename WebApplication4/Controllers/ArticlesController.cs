@@ -14,16 +14,20 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 namespace Blog_project_.Controllers
 {
     public class ArticlesController : Controller
     {
+
         private readonly UserManager<Profile> _userManager;
         private readonly ApplicationContext _context;
         private readonly IWebHostEnvironment _appEnvironment;
-        public ArticlesController(UserManager<Profile> userManager, ApplicationContext context, IWebHostEnvironment appEnvironment)
+        private readonly ILogger<ArticlesController> _logger;
+        public ArticlesController(UserManager<Profile> userManager, ApplicationContext context, IWebHostEnvironment appEnvironment, ILogger<ArticlesController> logger)
         {
+            _logger = logger;
             _userManager = userManager;
             _context = context;
             _appEnvironment = appEnvironment;
@@ -33,20 +37,23 @@ namespace Blog_project_.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                _logger.LogError("Doesn't exist id. Controller:Article. Action:Details");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
 
             var article = await _context.Articles
                 .FirstOrDefaultAsync(m => m.ArticleID == id);
             if (article == null)
             {
-                return NotFound();
+                _logger.LogError("Doesn't exist article. Controller:Article. Action:Details");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
 
             var user = await _context.Profiles.FindAsync(article.ProfileID);
             if (user==null)
             {
-                return NotFound();
+                _logger.LogError("Doesn't exist user. Controller:Article. Action:Details");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
             ViewData["UserName"] = user.UserName;
             List<Comment> comments = new List<Comment>();
@@ -120,18 +127,21 @@ namespace Blog_project_.Controllers
             
             if (id == null)
             {
-                return NotFound();
+                _logger.LogError("Doesn't exist id. Controller:Article. Action:Edit");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
 
             var article = await _context.Articles.FindAsync(id);
             if (article == null)
             {
-                return NotFound();
+                _logger.LogError("Doesn't exist article. Controller:Article. Action:Edit");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
             var user = await _userManager.FindByIdAsync(article.ProfileID);
             if (User.Identity.Name.ToString() == user.UserName || User.IsInRole("admin"))
             {
-                return View(article);
+                _logger.LogError("Doesn't exist user. Controller:Article. Action:Edit");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
             return NotFound();
         }
@@ -143,7 +153,8 @@ namespace Blog_project_.Controllers
 
             if (id != article.ArticleID)
             {
-                return NotFound();
+                _logger.LogError("Doesn't exist id. Controller:Article. Action:Edit");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
             Article article1 = await _context.Articles.FindAsync(article.ArticleID);
             if (ModelState.IsValid)
@@ -170,7 +181,8 @@ namespace Blog_project_.Controllers
                 {
                     if (!ArticleExists(article.ArticleID))
                     {
-                        return NotFound();
+                        _logger.LogError("Doesn't exist db. Controller:Article. Action:Edit");
+                        return RedirectPermanent("~/Error/Index?statusCode=404");
                     }
                     else
                     {
@@ -186,14 +198,16 @@ namespace Blog_project_.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                _logger.LogError("Doesn't exist id. Controller:Article. Action:Delete");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
 
             var article = await _context.Articles
                 .FirstOrDefaultAsync(m => m.ArticleID == id);
             if (article == null)
             {
-                return NotFound();
+                _logger.LogError("Doesn't exist areticle. Controller:Article. Action:Delete");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
 
             return View(article);
