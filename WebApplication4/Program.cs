@@ -25,23 +25,25 @@ namespace WebApplication4
         public static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            Log.Logger = new LoggerConfiguration()
-                .Enrich.FromLogContext()
-                .WriteTo.File("Logs\\all-logs.txt")
-                .WriteTo.Logger(lc => lc
-                .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Error)
-                .WriteTo.File("Logs\\error-logs.txt"))
-                .WriteTo.Logger(lc => lc
-                .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Error)
-                .WriteTo.Console())
-                .CreateLogger();
+
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
                 {
                     var userManager = services.GetRequiredService<UserManager<Profile>>();
+                    var config = services.GetRequiredService<IConfiguration>();
                     var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    Log.Logger = new LoggerConfiguration()
+                        .Enrich.FromLogContext()
+                        .WriteTo.File(config["all-logs"])
+                        .WriteTo.Logger(lc => lc
+                        .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Error)
+                        .WriteTo.File(config["error-logs"]))
+                        .WriteTo.Logger(lc => lc
+                        .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Error)
+                        .WriteTo.Console())
+                        .CreateLogger();
                     await RoleInitializer.InitializeAsync(userManager, rolesManager);
                 }
                 catch (Exception ex)

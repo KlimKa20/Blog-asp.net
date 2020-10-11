@@ -15,6 +15,7 @@ using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using WebApplication4.Service;
 
 namespace Blog_project_.Controllers
 {
@@ -23,14 +24,16 @@ namespace Blog_project_.Controllers
 
         private readonly UserManager<Profile> _userManager;
         private readonly ApplicationContext _context;
-        private readonly IWebHostEnvironment _appEnvironment;
+        private readonly ImageService _imageService;
+        private readonly ArticleRepository _articleRepository;
         private readonly ILogger<ArticlesController> _logger;
-        public ArticlesController(UserManager<Profile> userManager, ApplicationContext context, IWebHostEnvironment appEnvironment, ILogger<ArticlesController> logger)
+        public ArticlesController(UserManager<Profile> userManager, ApplicationContext context, ImageService imageService, ArticleRepository articleRepository,ILogger<ArticlesController> logger)
         {
             _logger = logger;
             _userManager = userManager;
             _context = context;
-            _appEnvironment = appEnvironment;
+            _imageService = imageService;
+            _articleRepository = articleRepository;
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -41,8 +44,7 @@ namespace Blog_project_.Controllers
                 return RedirectPermanent("~/Error/Index?statusCode=404");
             }
 
-            var article = await _context.Articles
-                .FirstOrDefaultAsync(m => m.ArticleID == id);
+            var article = await _articleRepository.FirstOrDefaultAsync(id);
             if (article == null)
             {
                 _logger.LogError("Doesn't exist article. Controller:Article. Action:Details");
@@ -94,28 +96,14 @@ namespace Blog_project_.Controllers
             {
                 if (uploadedFile != null)
                 {
-                    //byte[] imageData = null;
-                    //// считываем переданный файл в массив байтов
-                    //using (var binaryReader = new BinaryReader(uploadedFile.OpenReadStream()))
-                    //{
-                    //    imageData = binaryReader.ReadBytes((int)uploadedFile.Length);
-                    //}
-                    //article.Image = imageData;
-                    //_context.SaveChanges();
-                    string path = "/Files/" + uploadedFile.FileName;
-                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-                    {
-                        await uploadedFile.CopyToAsync(fileStream);
-                    }
-                    article.Image = path;
+                    article.Image = await _imageService.SaveImageAsync(uploadedFile);
                     _context.SaveChanges();
                 }
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 article.Profile= user;
                 article.DateTime = DateTime.Now;
                 article.Tag = await _context.Tags.FindAsync(article.TagID);
-                _context.Add(article);
-                await _context.SaveChangesAsync();
+                await _articleRepository.Create(article);
                 return RedirectPermanent("~/Home/Index");
             }
             return View(article);
@@ -131,7 +119,7 @@ namespace Blog_project_.Controllers
                 return RedirectPermanent("~/Error/Index?statusCode=404");
             }
 
-            var article = await _context.Articles.FindAsync(id);
+            var article = await _articleRepository.FirstOrDefaultAsync(id);
             if (article == null)
             {
                 _logger.LogError("Doesn't exist article. Controller:Article. Action:Edit");
@@ -140,8 +128,7 @@ namespace Blog_project_.Controllers
             var user = await _userManager.FindByIdAsync(article.ProfileID);
             if (User.Identity.Name.ToString() == user.UserName || User.IsInRole("admin"))
             {
-                _logger.LogError("Doesn't exist user. Controller:Article. Action:Edit");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return View(article);
             }
             return NotFound();
         }
@@ -156,7 +143,7 @@ namespace Blog_project_.Controllers
                 _logger.LogError("Doesn't exist id. Controller:Article. Action:Edit");
                 return RedirectPermanent("~/Error/Index?statusCode=404");
             }
-            Article article1 = await _context.Articles.FindAsync(article.ArticleID);
+            Article article1 = await _articleRepository.FirstOrDefaultAsync(article.ArticleID);
             if (ModelState.IsValid)
             {
                 try
@@ -165,17 +152,11 @@ namespace Blog_project_.Controllers
                         article1.Text = article.Text;
                     if (article.Title != article1.Title && article1 != null)
                         article1.Title = article.Title;
-                    if (article.Image != article1.Image && article != null)
+                    if (article.Image != article1.Image && article.Image != null)
                     {
-                        string path = "/Files/" + uploadedFile.FileName;
-                        using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-                        {
-                            await uploadedFile.CopyToAsync(fileStream);
-                        }
-                        article1.Image = path;
+                        article1.Image = await _imageService.SaveImageAsync(uploadedFile);
                     }
-                    _context.Update(article1);
-                    await _context.SaveChangesAsync();
+                    await _articleRepository.Update(article1);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -202,8 +183,7 @@ namespace Blog_project_.Controllers
                 return RedirectPermanent("~/Error/Index?statusCode=404");
             }
 
-            var article = await _context.Articles
-                .FirstOrDefaultAsync(m => m.ArticleID == id);
+            var article = await _articleRepository.FirstOrDefaultAsync(id);
             if (article == null)
             {
                 _logger.LogError("Doesn't exist areticle. Controller:Article. Action:Delete");
@@ -218,15 +198,14 @@ namespace Blog_project_.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var article = await _context.Articles.FindAsync(id);
-            _context.Articles.Remove(article);
-            await _context.SaveChangesAsync();
+            var article = await _articleRepository.FirstOrDefaultAsync(id);
+            await _articleRepository.Remove(article);
             return RedirectPermanent("~/Home/Index");
         }
 
         private bool ArticleExists(int id)
         {
-            return _context.Articles.Any(e => e.ArticleID == id);
+            return _articleRepository.Any(id);
         }
     }
 }

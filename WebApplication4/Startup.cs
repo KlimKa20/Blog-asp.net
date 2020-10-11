@@ -41,7 +41,9 @@ namespace WebApplication4
                 .AddDefaultTokenProviders();
             services.AddControllersWithViews();
 
+            services.AddScoped<ArticleRepository>();
             services.AddTransient<EmailService>();
+            services.AddSingleton<ImageService>();
         }
 
 
@@ -58,7 +60,6 @@ namespace WebApplication4
                 app.UseHsts();
             }
             app.UseStatusCodePagesWithReExecute("/Error/Index", "?statusCode={0}");
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
