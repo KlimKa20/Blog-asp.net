@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using blog_project.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using WebApplication4.Data;
-using WebApplication4.Models;
+using WebApplication4.Domain.Core;
+using WebApplication4.Infrastructure.Data;
 
 namespace WebApplication4.Controllers
 {

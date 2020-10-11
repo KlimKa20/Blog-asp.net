@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace blog_project.Models
+namespace WebApplication4.Domain.Core
 {
     public class Profile : IdentityUser
     {

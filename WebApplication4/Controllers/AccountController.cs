@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using blog_project.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApplication4.Service;
+using WebApplication4.Domain.Core;
+using WebApplication4.Services.BusinessLogic;
 using WebApplication4.ViewModels;
 
 namespace WebApplication4.Controllers

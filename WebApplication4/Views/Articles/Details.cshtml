@@ -1,4 +1,4 @@
-﻿@model blog_project.Models.Article
+﻿@model WebApplication4.Domain.Core.Article
 
 @{
     ViewData["Title"] = "Details";
@@ -55,7 +55,7 @@
                 </dd>
             }
         <ul style="min-height:300px;height:auto;background-color:white; border-radius:5px;" id="messagesList">
-            @foreach (var item in ViewData["Comment"] as IList<blog_project.Models.Comment>)
+            @foreach (var item in ViewData["Comment"] as IList<WebApplication4.Domain.Core.Comment>)
             {
                 <li>
                     <p>Логин:@item.Profile.UserName</p>

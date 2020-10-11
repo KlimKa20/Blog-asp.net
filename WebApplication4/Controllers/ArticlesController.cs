@@ -6,18 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
-using blog_project.Models;
 using Microsoft.EntityFrameworkCore.Internal;
-using WebApplication4.Models;
-using WebApplication4.Data;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using WebApplication4.Service;
+using WebApplication4.Domain.Core;
+using WebApplication4.Infrastructure.Data;
+using WebApplication4.Services.BusinessLogic;
 
-namespace Blog_project_.Controllers
+namespace WebApplication4.Controllers
 {
     public class ArticlesController : Controller
     {

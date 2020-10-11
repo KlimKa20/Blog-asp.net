@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using blog_project.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
-using WebApplication4.Data;
+using WebApplication4.Domain.Core;
+using WebApplication4.Infrastructure.Data;
 
-namespace WebApplication4.HubS
+namespace WebApplication4.Services.BusinessLogic
 {
     public class HabrDotNetHub : Hub
     {

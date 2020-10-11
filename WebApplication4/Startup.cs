@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using blog_project.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,9 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebApplication4.Data;
-using WebApplication4.HubS;
-using WebApplication4.Service;
+using WebApplication4.Domain.Core;
+using WebApplication4.Infrastructure.Data;
+using WebApplication4.Services.BusinessLogic;
 
 namespace WebApplication4
 {

@@ -1,12 +1,12 @@
-﻿using blog_project.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication4.Domain.Core;
 
-namespace WebApplication4.Service
+namespace WebApplication4.Domain.Interfaces
 {
-    interface IRepository : IDisposable
+    public interface IRepository : IDisposable
     {
         Task Create(Article article);
         Task Update(Article article);

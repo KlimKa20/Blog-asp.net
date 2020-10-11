@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace blog_project.Models
+namespace WebApplication4.Domain.Core
 {
     public class Comment
     {

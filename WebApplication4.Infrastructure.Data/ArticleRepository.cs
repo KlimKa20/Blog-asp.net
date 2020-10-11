@@ -1,12 +1,13 @@
-﻿using blog_project.Models;
+﻿
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication4.Data;
+using WebApplication4.Domain.Interfaces;
+using WebApplication4.Domain.Core;
 
-namespace WebApplication4.Service
+namespace WebApplication4.Infrastructure.Data
 {
     public class ArticleRepository : IRepository
     {

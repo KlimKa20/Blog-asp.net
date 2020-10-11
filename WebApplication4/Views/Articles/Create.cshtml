@@ -1,4 +1,4 @@
-﻿@model blog_project.Models.Article
+﻿@model WebApplication4.Domain.Core.Article
 
 @{
     ViewData["Title"] = "Create";
@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label asp-for="TagID" class="control-label"></label>
                 <select class="form-control" name="TagID">
-                    @foreach (blog_project.Models.Tag tag in (ViewData["Tags"] as IList<blog_project.Models.Tag>))
+                    @foreach (WebApplication4.Domain.Core.Tag tag in (ViewData["Tags"] as IList<WebApplication4.Domain.Core.Tag>))
                     {
                         <option value="@tag.TagID">@tag.TagName</option>
                     }

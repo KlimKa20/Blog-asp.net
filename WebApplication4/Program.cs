@@ -2,20 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using blog_project.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using WebApplication4.Models;
-using WebApplication4.Data;
-using NLog.Web;
-using NLog;
 
 using Serilog;
 using Serilog.Events;
+using WebApplication4.Domain.Core;
+using WebApplication4.Infrastructure.Data;
 
 namespace WebApplication4
 {

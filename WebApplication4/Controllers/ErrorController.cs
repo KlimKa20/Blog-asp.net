@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApplication4.Models;
+using WebApplication4.Domain.Core;
 
 namespace WebApplication4.Controllers
 {

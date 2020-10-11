@@ -8,7 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace blog_project.Models
+namespace WebApplication4.Domain.Core
 {
     public class Article
     {
