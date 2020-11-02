@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication4.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication4.Services.BusinessLogic", "WebApplication4.Services.BusinessLogic\WebApplication4.Services.BusinessLogic.csproj", "{C6D8CA3E-8273-4A68-A606-25F4054CFC93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication4.Services.XUnitTestProject", "WebApplication4.Services.XUnitTestProject\WebApplication4.Services.XUnitTestProject.csproj", "{D861F8EE-2CEC-42F3-9118-9C5E200E58A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C6D8CA3E-8273-4A68-A606-25F4054CFC93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6D8CA3E-8273-4A68-A606-25F4054CFC93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6D8CA3E-8273-4A68-A606-25F4054CFC93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D861F8EE-2CEC-42F3-9118-9C5E200E58A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D861F8EE-2CEC-42F3-9118-9C5E200E58A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D861F8EE-2CEC-42F3-9118-9C5E200E58A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D861F8EE-2CEC-42F3-9118-9C5E200E58A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{450787DB-B256-464C-9BAC-97085BE95A60} = {AC171E6F-29F9-4DF6-981C-07A45EB7D164}
 		{5AFCDD34-2AB4-45F2-8EA6-F75CDE3561F4} = {00AD46DA-984C-41D5-888E-B27C7079719F}
 		{C6D8CA3E-8273-4A68-A606-25F4054CFC93} = {7D8F6DAC-3E84-4588-B3B6-815EB02E3E1A}
+		{D861F8EE-2CEC-42F3-9118-9C5E200E58A4} = {7D8F6DAC-3E84-4588-B3B6-815EB02E3E1A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6FFB7E37-88E5-49CD-8EB9-D9A350B969AF}

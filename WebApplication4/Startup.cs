@@ -28,18 +28,28 @@ namespace WebApplication4
 
         public IConfiguration Configuration { get; }
 
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSignalR();
             services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("WebApplication4")));
 
             services.AddIdentity<Profile, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationContext>()
                 .AddDefaultTokenProviders();
             services.AddControllersWithViews();
+            services.AddAuthentication()
+            .AddGoogle(options =>
+            {
+                IConfigurationSection googleAuthNSection =
+                    Configuration.GetSection("Authentication:Google");
 
+                options.ClientId = "872141739752-cnd1jbp6iqd1of8mdhdg4v68svg047j8.apps.googleusercontent.com"; 
+                options.ClientSecret = "WTX1LXCX7i39IzVNZfV2mcJJ"; 
+                //options.ClientId = Configuration["Authentication:Google:ClientId"];
+                //options.ClientSecret = Configuration["Authentication:Google:ClientSecret"]; 
+            });
             services.AddScoped<ArticleRepository>();
             services.AddTransient<EmailService>();
             services.AddSingleton<ImageService>();
@@ -49,15 +59,15 @@ namespace WebApplication4
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             //env.EnvironmentName = "Production";
-            if (env.IsDevelopment())
-            {
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error/ErrorPro");
-                app.UseHsts();
-            }
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Error/ErrorPro");
+            //    app.UseHsts();
+            //}
             app.UseStatusCodePagesWithReExecute("/Error/Index", "?statusCode={0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -66,7 +76,6 @@ namespace WebApplication4
 
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

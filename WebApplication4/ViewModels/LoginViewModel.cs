@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authentication;
+using Org.BouncyCastle.Asn1.Cms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,5 +23,7 @@ namespace WebApplication4.ViewModels
         public bool RememberMe { get; set; }
 
         public string ReturnUrl { get; set; }
+
+        public IList<AuthenticationScheme> ExternalLogins { get; set; }
     }
 }

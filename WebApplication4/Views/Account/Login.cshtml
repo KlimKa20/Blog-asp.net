@@ -23,5 +23,23 @@
             <input type="submit" value="Войти" />
         </div>
         <a asp-action="ForgotPassword">Забыли пароль?</a>
-        </div>
+    </div>
+
 </form>
+<form method="post" asp-action="ExternalLogin" asp-route-retunUrl="@Model.ReturnUrl">
+    @foreach(var provider in Model.ExternalLogins)
+    {
+    <button class="btn btn-primary" type="submit" name="provider"  value="@provider.Name">
+        Войти с помощью аккаунта Google
+    </button>
+    }
+
+
+</form>
+      @*@using (Html.BeginForm("GoogleLogin", "Account" , FormMethod.Post, new { style="margin-top:12px" }))
+      {
+        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+        <button class="btn btn-primary" type="submit">
+            Войти с помощью аккаунта Google
+        </button>
+    }*@

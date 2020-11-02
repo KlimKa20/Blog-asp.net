@@ -30,7 +30,7 @@ namespace WebApplication4.Services.BusinessLogic
             comment.Text = Text;
             _context.Add(comment);
             await _context.SaveChangesAsync();
-            await Clients.All.SendAsync("ReceiveMessage", user.UserName, comment.Text, comment.DateTime);
+            await Clients.Group(ArticleID).SendAsync("ReceiveMessage", user.UserName, comment.Text, comment.DateTime);
         }
     }
 }

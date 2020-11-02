@@ -16,35 +16,34 @@ namespace WebApplication4.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationContext _context;
-
-        public HomeController(ILogger<HomeController> logger, ApplicationContext context)
+        private readonly ArticleRepository _articleRepository;
+        public HomeController(ILogger<HomeController> logger, ApplicationContext context, ArticleRepository articleRepository)
         {
             _logger = logger;
             _context = context;
+            _articleRepository = articleRepository;
         }
 
 
         public async Task<IActionResult> Index(int? id)
         {
-            int x = 0;
             if (id != null)
             {
                 List<Article> articles;
                 try
                 {
-                    articles = await _context.Articles.Where(e => e.Tag.TagID == id).ToListAsync();
+                    articles = await _articleRepository.FindAllbyTag(id);
                 }
                 catch (Exception)
                 {
                     _logger.LogError("Doesn't exist id. Controller:Home. Action:Index");
                     return RedirectPermanent("~/Error/Index?statusCode=404");
                 }
-                
-                ViewData["Tags"] = _context.Tags.FindAsync(id).Result.TagName;
+                ViewData["Tags"] = _context.Tags.Find(id).TagName;
                 return View(articles);
             }
             ViewData["Tags"] = "Все статьи";
-            return View(await _context.Articles.ToListAsync());
+            return View(await _articleRepository.FindAll());
         }
 
         public IActionResult Privacy()
@@ -58,11 +57,11 @@ namespace WebApplication4.Controllers
             List<Article> articles;
             if (UserName == null)
             {
-                articles = await _context.Articles.Where(e => e.Profile.UserName == User.Identity.Name).ToListAsync();
+                articles = await _articleRepository.FindAllbyName(User.Identity.Name); 
             }
             else
             {
-                articles = await _context.Articles.Where(e => e.Profile.UserName == UserName).ToListAsync();
+                articles = await _articleRepository.FindAllbyName(UserName);
             }
             if (articles.Count == 0)
             {

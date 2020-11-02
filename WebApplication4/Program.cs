@@ -13,6 +13,7 @@ using Serilog;
 using Serilog.Events;
 using WebApplication4.Domain.Core;
 using WebApplication4.Infrastructure.Data;
+using Azure.Identity;
 
 namespace WebApplication4
 {
@@ -54,13 +55,20 @@ namespace WebApplication4
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-      .ConfigureWebHostDefaults(webBuilder =>
-      {
-          webBuilder.UseStartup<Startup>();
-      })
-            .UseSerilog();
-    }
-}
+            //.ConfigureAppConfiguration((context, config) =>
+            //{
+            //    var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUriq"));
+            //    config.AddAzureKeyVault(
+            //    keyVaultEndpoint,
+            //    new DefaultAzureCredential());
+            //})
+                  .ConfigureWebHostDefaults(webBuilder =>
+                  {
+                      webBuilder.UseStartup<Startup>();
+                  })
+                        .UseSerilog();
+                }
+            }
 
 
 //namespace WebApplication4

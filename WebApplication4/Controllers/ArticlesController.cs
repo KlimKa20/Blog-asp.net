@@ -124,8 +124,8 @@ namespace WebApplication4.Controllers
                 _logger.LogError("Doesn't exist article. Controller:Article. Action:Edit");
                 return RedirectPermanent("~/Error/Index?statusCode=404");
             }
-            var user = await _userManager.FindByIdAsync(article.ProfileID);
-            if (User.Identity.Name.ToString() == user.UserName || User.IsInRole("admin"))
+            var user = await _userManager?.FindByIdAsync(article.ProfileID);
+            if (User?.Identity.Name.ToString() == user?.UserName || User.IsInRole("admin"))
             {
                 return View(article);
             }
