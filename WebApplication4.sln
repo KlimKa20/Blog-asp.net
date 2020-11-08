@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication4.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication4.Services.BusinessLogic", "WebApplication4.Services.BusinessLogic\WebApplication4.Services.BusinessLogic.csproj", "{C6D8CA3E-8273-4A68-A606-25F4054CFC93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication4.Services.XUnitTestProject", "WebApplication4.Services.XUnitTestProject\WebApplication4.Services.XUnitTestProject.csproj", "{D861F8EE-2CEC-42F3-9118-9C5E200E58A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication4.Services.XUnitTestProject", "WebApplication4.Services.XUnitTestProject\WebApplication4.Services.XUnitTestProject.csproj", "{D861F8EE-2CEC-42F3-9118-9C5E200E58A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

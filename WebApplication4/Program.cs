@@ -55,81 +55,25 @@ namespace WebApplication4
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            //.ConfigureAppConfiguration((context, config) =>
-            //{
-            //    var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUriq"));
-            //    config.AddAzureKeyVault(
-            //    keyVaultEndpoint,
-            //    new DefaultAzureCredential());
-            //})
+//.ConfigureAppConfiguration((context, config) =>
+//{
+//var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUriwq"));
+//config.AddAzureKeyVault(
+//keyVaultEndpoint,
+//new DefaultAzureCredential());
+//})
+                  //.ConfigureAppConfiguration((context, config) =>
+                  //{
+                  //var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUri"));
+                  //config.AddAzureKeyVault(
+                  //keyVaultEndpoint,
+                  //new DefaultAzureCredential());
+                  //})
+
                   .ConfigureWebHostDefaults(webBuilder =>
                   {
                       webBuilder.UseStartup<Startup>();
                   })
                         .UseSerilog();
-                }
-            }
-
-
-//namespace WebApplication4
-//{
-//    public class Program
-//    {
-//        [STAThread]
-//        public static async Task Main(string[] args)
-//        {
-
-
-
-//            var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
-//            try
-//            {
-//                logger.Debug("init main");
-//                var host = CreateHostBuilder(args).Build();
-//                using (var scope = host.Services.CreateScope())
-//                {
-//                    var services = scope.ServiceProvider;
-//                    try
-//                    {
-//                        var userManager = services.GetRequiredService<UserManager<Profile>>();
-//                        var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-//                        await RoleInitializer.InitializeAsync(userManager, rolesManager);
-//                    }
-//                    catch (Exception ex)
-//                    {
-//                        //var logger = services.GetRequiredService<ILogger<Program>>();
-//                        //logger.LogError(ex, "An error occurred while seeding the database.");
-//                    }
-//                }
-//                host.Run();
-//            }
-//            catch (Exception exception)
-//            {
-//                //NLog: catch setup errors
-//                logger.Error(exception, "Stopped program because of exception");
-//                throw;
-//            }
-//            finally
-//            {
-//                // Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
-//                NLog.LogManager.Shutdown();
-//            }
-
-
-
-//        }
-
-//        public static IHostBuilder CreateHostBuilder(string[] args) =>
-//            Host.CreateDefaultBuilder(args)
-//      .ConfigureWebHostDefaults(webBuilder =>
-//      {
-//          webBuilder.UseStartup<Startup>();
-//      })
-//      .ConfigureLogging(logging =>
-//      {
-//          logging.ClearProviders();
-//          logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-//      })
-//      .UseNLog();
-//    }
-//}
+    }
+}

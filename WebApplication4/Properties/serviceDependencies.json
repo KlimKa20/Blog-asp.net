@@ -6,7 +6,7 @@
     },
     "secrets1": {
       "type": "secrets",
-      "connectionId": "VaultUriq"
+      "connectionId": "VaultUriwq"
     }
   }
 }

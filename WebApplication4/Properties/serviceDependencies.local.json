@@ -1,15 +1,15 @@
 {
   "dependencies": {
     "mssql1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/webapplication4db/databases/WebApplication4_db1",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/webapplication4dbserverklim/databases/WebApplication4_db",
       "type": "mssql.azure",
       "connectionId": "DefaultConnection",
       "secretStore": "LocalSecretsFile"
     },
     "secrets1": {
-      "resourceId": null,
-      "type": "secrets.user",
-      "connectionId": null,
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/WebApplication4vaul",
+      "type": "secrets.keyVault",
+      "connectionId": "VaultUriwq",
       "secretStore": null
     }
   }

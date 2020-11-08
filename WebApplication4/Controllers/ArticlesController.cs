@@ -22,17 +22,22 @@ namespace WebApplication4.Controllers
     {
 
         private readonly UserManager<Profile> _userManager;
-        private readonly ApplicationContext _context;
+        private readonly TagRepository _tagRepository;
         private readonly ImageService _imageService;
+        private readonly ProfileRepository _profileRepository;
         private readonly ArticleRepository _articleRepository;
+        private readonly CommentRepository _commentRepository;
+
         private readonly ILogger<ArticlesController> _logger;
-        public ArticlesController(UserManager<Profile> userManager, ApplicationContext context, ImageService imageService, ArticleRepository articleRepository,ILogger<ArticlesController> logger)
+        public ArticlesController(UserManager<Profile> userManager, TagRepository tagRepository, ImageService imageService, CommentRepository commentRepository, ProfileRepository profileRepository, ArticleRepository articleRepository, ILogger<ArticlesController> logger)
         {
             _logger = logger;
             _userManager = userManager;
-            _context = context;
+            _tagRepository = tagRepository;
             _imageService = imageService;
+            _profileRepository = profileRepository;
             _articleRepository = articleRepository;
+            _commentRepository = commentRepository;
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -40,27 +45,27 @@ namespace WebApplication4.Controllers
             if (id == null)
             {
                 _logger.LogError("Doesn't exist id. Controller:Article. Action:Details");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return NotFound();
             }
 
-            var article = await _articleRepository.FirstOrDefaultAsync(id);
+            var article = await _articleRepository.FirstOrDefaultAsync(id.Value);
             if (article == null)
             {
                 _logger.LogError("Doesn't exist article. Controller:Article. Action:Details");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return NotFound();
             }
 
-            var user = await _context.Profiles.FindAsync(article.ProfileID);
-            if (user==null)
+            var user = await _profileRepository.FindAsync(article.ProfileID);
+            if (user == null)
             {
                 _logger.LogError("Doesn't exist user. Controller:Article. Action:Details");
                 return RedirectPermanent("~/Error/Index?statusCode=404");
             }
             ViewData["UserName"] = user.UserName;
             List<Comment> comments = new List<Comment>();
-            foreach (var item in _context.Comments.Include(s => s.Article).Where(s => s.ArticleID == article.ArticleID).ToList())
+            foreach (var item in _commentRepository.FindAllByArticle(article.ArticleID))
             {
-                item.Profile = await _context.Profiles.FindAsync(item.ProfileID);
+                item.Profile = await _profileRepository.FindAsync(item.ProfileID);
                 comments.Add(item);
             }
 
@@ -75,9 +80,8 @@ namespace WebApplication4.Controllers
             var profile = await _userManager.FindByNameAsync(User.Identity.Name);
             if (!profile.isBlocked)
             {
-                SelectList tags = new SelectList(_context.Tags, "TagID", "TagName");
-                ViewBag.Tags = tags;
-                ViewData["tags"] = _context.Tags.ToList();
+
+                ViewData["tags"] = await _tagRepository.FindAll();
                 return View();
             }
             else
@@ -96,12 +100,11 @@ namespace WebApplication4.Controllers
                 if (uploadedFile != null)
                 {
                     article.Image = await _imageService.SaveImageAsync(uploadedFile);
-                    _context.SaveChanges();
                 }
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
-                article.Profile= user;
+                article.Profile = user;
                 article.DateTime = DateTime.Now;
-                article.Tag = await _context.Tags.FindAsync(article.TagID);
+                article.Tag = await _tagRepository.FirstOrDefaultAsync(article.TagID);
                 await _articleRepository.Create(article);
                 return RedirectPermanent("~/Home/Index");
             }
@@ -111,18 +114,18 @@ namespace WebApplication4.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
-            
+
             if (id == null)
             {
                 _logger.LogError("Doesn't exist id. Controller:Article. Action:Edit");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return NotFound();
             }
 
-            var article = await _articleRepository.FirstOrDefaultAsync(id);
+            var article = await _articleRepository.FirstOrDefaultAsync(id.Value);
             if (article == null)
             {
                 _logger.LogError("Doesn't exist article. Controller:Article. Action:Edit");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return NotFound();
             }
             var user = await _userManager?.FindByIdAsync(article.ProfileID);
             if (User?.Identity.Name.ToString() == user?.UserName || User.IsInRole("admin"))
@@ -140,7 +143,7 @@ namespace WebApplication4.Controllers
             if (id != article.ArticleID)
             {
                 _logger.LogError("Doesn't exist id. Controller:Article. Action:Edit");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return NotFound();
             }
             Article article1 = await _articleRepository.FirstOrDefaultAsync(article.ArticleID);
             if (ModelState.IsValid)
@@ -162,7 +165,7 @@ namespace WebApplication4.Controllers
                     if (!ArticleExists(article.ArticleID))
                     {
                         _logger.LogError("Doesn't exist db. Controller:Article. Action:Edit");
-                        return RedirectPermanent("~/Error/Index?statusCode=404");
+                        return NotFound();
                     }
                     else
                     {
@@ -179,14 +182,14 @@ namespace WebApplication4.Controllers
             if (id == null)
             {
                 _logger.LogError("Doesn't exist id. Controller:Article. Action:Delete");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return NotFound();
             }
 
-            var article = await _articleRepository.FirstOrDefaultAsync(id);
+            var article = await _articleRepository.FirstOrDefaultAsync(id.Value);
             if (article == null)
             {
                 _logger.LogError("Doesn't exist areticle. Controller:Article. Action:Delete");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return NotFound();
             }
 
             return View(article);

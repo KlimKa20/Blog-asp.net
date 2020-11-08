@@ -15,13 +15,15 @@ namespace WebApplication4.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationContext _context;
         private readonly ArticleRepository _articleRepository;
-        public HomeController(ILogger<HomeController> logger, ApplicationContext context, ArticleRepository articleRepository)
+        private readonly TagRepository _tagRepository;
+        private readonly ProfileRepository _profileRepository;
+        public HomeController(ILogger<HomeController> logger, TagRepository tagRepository, ArticleRepository articleRepository, ProfileRepository profileRepository)
         {
             _logger = logger;
-            _context = context;
+            _tagRepository = tagRepository;
             _articleRepository = articleRepository;
+            _profileRepository = profileRepository;
         }
 
 
@@ -32,14 +34,14 @@ namespace WebApplication4.Controllers
                 List<Article> articles;
                 try
                 {
-                    articles = await _articleRepository.FindAllbyTag(id);
+                    articles = await _articleRepository.FindAllbyTag(id.Value);
                 }
                 catch (Exception)
                 {
                     _logger.LogError("Doesn't exist id. Controller:Home. Action:Index");
-                    return RedirectPermanent("~/Error/Index?statusCode=404");
+                    return NotFound();
                 }
-                ViewData["Tags"] = _context.Tags.Find(id).TagName;
+                ViewData["Tags"] = (await _tagRepository.FirstOrDefaultAsync(id.Value)).TagName;
                 return View(articles);
             }
             ViewData["Tags"] = "Все статьи";
@@ -77,24 +79,23 @@ namespace WebApplication4.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> UserBlocked(string? UserName)
         {
-            var profile = await _context.Profiles.Where(e => e.UserName == UserName).ToListAsync();
-            if (profile[0].isBlocked)
+            var profile = await _profileRepository.FirstOrDefaultAsync(UserName);
+            if (profile.isBlocked)
             {
-                profile[0].isBlocked = false;
+                profile.isBlocked = false;
             }
             else
             {
-                profile[0].isBlocked = true;
+                profile.isBlocked = true;
             }
-            _context.Update(profile[0]);
-            await _context.SaveChangesAsync();
-            return View("AdminPage", await _context.Profiles.Where(e => e.UserName != "admin").ToListAsync());
+            await _profileRepository.Update(profile);
+            return View("AdminPage", await _profileRepository.FindAllAsyncByUserName());
         }
 
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> AdminPage(string? UserName)
         {
-            return View(await _context.Profiles.Where(e => e.UserName != "admin").ToListAsync());
+            return View(await _profileRepository.FindAllAsyncByUserName());
         }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApplication4.Domain.Core;
+using WebApplication4.Infrastructure.Data;
 using WebApplication4.Services.BusinessLogic;
 using WebApplication4.ViewModels;
 
@@ -19,6 +20,7 @@ namespace WebApplication4.Controllers
         private readonly ILogger<AccountController> _logger;
         private readonly UserManager<Profile> _userManager;
         private readonly SignInManager<Profile> _signInManager;
+        private readonly ProfileRepository _profileRepository;
         private readonly EmailService _emailService;
         public AccountController(UserManager<Profile> userManager, SignInManager<Profile> signInManager, EmailService emailService, ILogger<AccountController> logger)
         {
@@ -47,7 +49,7 @@ namespace WebApplication4.Controllers
                         "Account",
                         new { userId = user.Id, code = code },
                         protocol: HttpContext.Request.Scheme);
-                    await _emailService.SendEmailAsync(model.Email, "Confirm your account",
+                    await _emailService.SendMessage(model.Email, "Confirm your account",
                         $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
 
                     ViewData["Text"] = "Для завершения регистрации проверьте электронную почту";
@@ -70,13 +72,13 @@ namespace WebApplication4.Controllers
             if (userId == null || code == null)
             {
                 _logger.LogError("Doesn't exist id or code. Controller:Account. Action:ConfirmEmail");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return NotFound();
             }
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 _logger.LogError("Doesn't exist user. Controller:Account. Action:ConfirmEmail");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return NotFound();
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
             if (result.Succeeded)
@@ -84,7 +86,7 @@ namespace WebApplication4.Controllers
             else
             {
                 _logger.LogError("Doesn't succesed. Controller:Account. Action:ConfirmEmail");
-                return RedirectPermanent("~/Error/Index?statusCode=404");
+                return NotFound();
             }
         }
         [HttpGet]
@@ -115,6 +117,7 @@ namespace WebApplication4.Controllers
                 }
                 else
                 {
+                    model.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
                     ModelState.AddModelError("", "Неправильный логин и (или) пароль");
                 }
             }
@@ -143,7 +146,7 @@ namespace WebApplication4.Controllers
 
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                await _emailService.SendEmailAsync(model.Email, "Reset Password",
+                await _emailService.SendMessage(model.Email, "Reset Password",
                     $"Для сброса пароля пройдите по ссылке: <a href='{callbackUrl}'>сброс</a>");
                 return View("ForgotPasswordConfirmation");
             }

@@ -12,12 +12,17 @@ namespace WebApplication4.Services.BusinessLogic
     public class HabrDotNetHub : Hub
     {
         private readonly UserManager<Profile> _userManager;
-        private readonly ApplicationContext _context;
+        private readonly CommentRepository _commentRepository;
 
-        public HabrDotNetHub(UserManager<Profile> userManager,ApplicationContext context)
+        public HabrDotNetHub(UserManager<Profile> userManager, CommentRepository commentRepository)
         {
             _userManager = userManager;
-            _context = context;
+            _commentRepository = commentRepository;
+        }
+
+        public async Task JoinPostGroup(string ArticleID)
+        {
+            await Groups.AddToGroupAsync(Context.ConnectionId, ArticleID);
         }
 
         public async Task SendMessage(string ArticleID, string Text)
@@ -28,8 +33,7 @@ namespace WebApplication4.Services.BusinessLogic
             comment.DateTime = DateTime.Now;
             comment.ArticleID = Int32.Parse(ArticleID);
             comment.Text = Text;
-            _context.Add(comment);
-            await _context.SaveChangesAsync();
+            await _commentRepository.Create(comment);
             await Clients.Group(ArticleID).SendAsync("ReceiveMessage", user.UserName, comment.Text, comment.DateTime);
         }
     }

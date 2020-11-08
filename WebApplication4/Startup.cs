@@ -33,7 +33,7 @@ namespace WebApplication4
         {
             services.AddSignalR();
             services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("WebApplication4")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("WebApplication4")));
 
             services.AddIdentity<Profile, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationContext>()
@@ -45,12 +45,16 @@ namespace WebApplication4
                 IConfigurationSection googleAuthNSection =
                     Configuration.GetSection("Authentication:Google");
 
-                options.ClientId = "872141739752-cnd1jbp6iqd1of8mdhdg4v68svg047j8.apps.googleusercontent.com"; 
-                options.ClientSecret = "WTX1LXCX7i39IzVNZfV2mcJJ"; 
+
+                options.ClientId = "872141739752-cnd1jbp6iqd1of8mdhdg4v68svg047j8.apps.googleusercontent.com";
+                options.ClientSecret = "WTX1LXCX7i39IzVNZfV2mcJJ";
                 //options.ClientId = Configuration["Authentication:Google:ClientId"];
-                //options.ClientSecret = Configuration["Authentication:Google:ClientSecret"]; 
+                //options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
             });
             services.AddScoped<ArticleRepository>();
+            services.AddScoped<ProfileRepository>();
+            services.AddScoped<TagRepository>();
+            services.AddScoped<CommentRepository>();
             services.AddTransient<EmailService>();
             services.AddSingleton<ImageService>();
         }
@@ -59,15 +63,15 @@ namespace WebApplication4
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             //env.EnvironmentName = "Production";
-            //if (env.IsDevelopment())
-            //{
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-            //    app.UseExceptionHandler("/Error/ErrorPro");
-            //    app.UseHsts();
-            //}
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error/ErrorPro");
+                app.UseHsts();
+            }
             app.UseStatusCodePagesWithReExecute("/Error/Index", "?statusCode={0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();

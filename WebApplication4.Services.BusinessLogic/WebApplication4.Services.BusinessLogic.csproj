@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebApplication4.Domain.Core\WebApplication4.Domain.Core.csproj" />
+    <ProjectReference Include="..\WebApplication4.Domain.Interfaces\WebApplication4.Domain.Interfaces.csproj" />
     <ProjectReference Include="..\WebApplication4.Infrastructure.Data\WebApplication4.Infrastructure.Data.csproj" />
   </ItemGroup>
 

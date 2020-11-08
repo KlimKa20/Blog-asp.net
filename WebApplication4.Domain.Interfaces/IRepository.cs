@@ -6,12 +6,13 @@ using WebApplication4.Domain.Core;
 
 namespace WebApplication4.Domain.Interfaces
 {
-    public interface IRepository : IDisposable
+    public interface IRepository<T, Y> : IDisposable
+        where T : class
     {
-        Task Create(Article article);
-        Task Update(Article article);
-        bool Any(int id);
-        Task Remove(Article article);
-        Task<Article> FirstOrDefaultAsync(int? id);
+        Task Create(T article);
+        Task Update(T article);
+        bool Any(Y id);
+        Task Remove(T article);
+        Task<T> FirstOrDefaultAsync(Y id);
     }
 }
