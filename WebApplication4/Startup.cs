@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebApplication4.Domain.Core;
+using WebApplication4.Domain.Interfaces;
 using WebApplication4.Infrastructure.Data;
 using WebApplication4.Services.BusinessLogic;
 
@@ -55,7 +56,7 @@ namespace WebApplication4
             services.AddScoped<ProfileRepository>();
             services.AddScoped<TagRepository>();
             services.AddScoped<CommentRepository>();
-            services.AddTransient<EmailService>();
+            services.AddTransient<ISender,EmailService>();
             services.AddSingleton<ImageService>();
         }
 

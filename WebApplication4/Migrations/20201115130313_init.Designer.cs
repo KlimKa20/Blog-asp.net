@@ -10,8 +10,8 @@ using WebApplication4.Infrastructure.Data;
 namespace WebApplication4.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20201103085924_gg")]
-    partial class gg
+    [Migration("20201115130313_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

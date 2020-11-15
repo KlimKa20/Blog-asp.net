@@ -97,9 +97,15 @@ namespace WebApplication4.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (uploadedFile != null)
+                if (uploadedFile != null && uploadedFile.ContentType.ToLower().Contains("image"))
                 {
                     article.Image = await _imageService.SaveImageAsync(uploadedFile);
+                }
+                else
+                {
+                    ModelState.AddModelError("Image", "Некорректный формат");
+                    ViewData["tags"] = await _tagRepository.FindAll();
+                    return View(article);
                 }
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 article.Profile = user;
@@ -154,9 +160,14 @@ namespace WebApplication4.Controllers
                         article1.Text = article.Text;
                     if (article.Title != article1.Title && article1 != null)
                         article1.Title = article.Title;
-                    if (article.Image != article1.Image && article.Image != null)
+                    if (uploadedFile != null && uploadedFile.ContentType.ToLower().Contains("image"))
                     {
                         article1.Image = await _imageService.SaveImageAsync(uploadedFile);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Image", "Некорректный формат");
+                        return View(article);
                     }
                     await _articleRepository.Update(article1);
                 }

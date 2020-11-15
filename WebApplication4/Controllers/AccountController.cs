@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApplication4.Domain.Core;
+using WebApplication4.Domain.Interfaces;
 using WebApplication4.Infrastructure.Data;
 using WebApplication4.Services.BusinessLogic;
 using WebApplication4.ViewModels;
@@ -21,8 +22,8 @@ namespace WebApplication4.Controllers
         private readonly UserManager<Profile> _userManager;
         private readonly SignInManager<Profile> _signInManager;
         private readonly ProfileRepository _profileRepository;
-        private readonly EmailService _emailService;
-        public AccountController(UserManager<Profile> userManager, SignInManager<Profile> signInManager, EmailService emailService, ILogger<AccountController> logger)
+        private readonly ISender _emailService;
+        public AccountController(UserManager<Profile> userManager, SignInManager<Profile> signInManager, ISender emailService, ILogger<AccountController> logger)
         {
             _logger = logger;
             _emailService = emailService;

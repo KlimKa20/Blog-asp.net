@@ -51,7 +51,7 @@
             {
               "kind": "v12.0",
               "location": "[parameters('resourceLocation')]",
-              "name": "webapplication4dbserverklim",
+              "name": "webapplication4dbserver1",
               "type": "Microsoft.Sql/servers",
               "apiVersion": "2017-10-01-preview"
             },
@@ -63,11 +63,11 @@
               },
               "kind": "v12.0,user",
               "location": "[parameters('resourceLocation')]",
-              "name": "webapplication4dbserverklim/WebApplication4_db",
+              "name": "webapplication4dbserver1/WebApplication4_db",
               "type": "Microsoft.Sql/servers/databases",
               "apiVersion": "2017-10-01-preview",
               "dependsOn": [
-                "webapplication4dbserverklim"
+                "webapplication4dbserver1"
               ]
             }
           ]
