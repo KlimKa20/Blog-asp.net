@@ -9,7 +9,7 @@
     "secrets1": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/WebApplication4vaul",
       "type": "secrets.keyVault",
-      "connectionId": "VaultUriwq",
+      "connectionId": "VaultUri",
       "secretStore": "AzureAppSettings"
     }
   }

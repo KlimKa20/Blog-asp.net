@@ -39,11 +39,15 @@ namespace WebApplication4.Infrastructure.Data
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Article>> FindAll()
+        public Task<List<Article>> FindAll()
         {
-            return await _context.Articles.ToListAsync();
+            return  _context.Articles.ToListAsync();
         }
 
+        public List<Article> FindAll1()
+        {
+            return _context.Articles.ToList();
+        }
         public async Task<Article> FirstOrDefaultAsync(int id)
         {
             return await _context.Articles.FirstOrDefaultAsync(m => m.ArticleID == id);
@@ -52,7 +56,14 @@ namespace WebApplication4.Infrastructure.Data
         {
             return await _context.Articles.Where(e => e.Tag.TagID == id).ToListAsync();
         }
-
+        public Article jj(int id)
+        {
+            return (Article)_context.Find( typeof(Article));
+        }
+        public List<Article> FindAllbyTag1(int id)
+        {
+            return  _context.Articles.Where(e => e.Tag.TagID == id).ToList();
+        }
         public async Task<List<Article>> FindAllbyName(string UserName)
         {
             return await _context.Articles.Where(e => e.Profile.UserName == UserName).ToListAsync();

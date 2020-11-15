@@ -63,15 +63,15 @@ namespace WebApplication4
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             //env.EnvironmentName = "Production";
-            if (env.IsDevelopment())
-            {
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error/ErrorPro");
-                app.UseHsts();
-            }
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Error/ErrorPro");
+            //    app.UseHsts();
+            //}
             app.UseStatusCodePagesWithReExecute("/Error/Index", "?statusCode={0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();

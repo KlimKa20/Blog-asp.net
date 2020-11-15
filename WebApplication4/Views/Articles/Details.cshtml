@@ -45,12 +45,12 @@
         <ul style="min-height:300px;height:auto;background-color:white; border-radius:5px;" id="messagesList">
             @foreach (var item in ViewData["Comment"] as IList<WebApplication4.Domain.Core.Comment>)
             {
-                <li>
-                    <p>Логин:@item.Profile.UserName</p>
-                    <p>Коментарий:@item.Text</p>
-                    <p>Дата:@item.DateTime</p>
-                    <br />
-                </li>
+            <li>
+                <p>Логин:@item.Profile.UserName</p>
+                <p>Коментарий:@item.Text</p>
+                <p>Дата:@item.DateTime.ToString("dd/MM/yyyy HH:mm:ss")</p>
+                <br />
+            </li>
             }
         </ul>
     </div>

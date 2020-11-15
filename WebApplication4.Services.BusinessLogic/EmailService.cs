@@ -20,7 +20,7 @@ namespace WebApplication4.Services.BusinessLogic
         {
             var emailMessage = new MimeMessage();
 
-            emailMessage.From.Add(new MailboxAddress("У Артемки в хатке", _configuration.GetSection("DataForMail")["Login"]));
+            emailMessage.From.Add(new MailboxAddress("У Артемки в хатке", _configuration.GetSection("DataForMail").GetValue<string>("Login")));
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
@@ -31,7 +31,7 @@ namespace WebApplication4.Services.BusinessLogic
             using (var client = new SmtpClient())
             {
                 await client.ConnectAsync("smtp.mail.ru", 25, false);
-                await client.AuthenticateAsync(_configuration.GetSection("DataForMail")["Login"], _configuration.GetSection("DataForMail")["Password"]);
+                await client.AuthenticateAsync(_configuration.GetSection("DataForMail").GetValue<string>("Login"), _configuration.GetSection("DataForMail").GetValue<string>("Password"));
                 await client.SendAsync(emailMessage);
 
                 await client.DisconnectAsync(true);

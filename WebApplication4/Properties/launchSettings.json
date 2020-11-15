@@ -15,7 +15,8 @@
         "VaultUrioo": "https://webapplication4vaul.vault.azure.net/",
         "AZURE_USERNAME": "0Klimka.Limka0@gmail.com",
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "VaultUriwq": "https://webapplication4vaul.vault.azure.net/"
+        "VaultUriwq": "https://webapplication4vaul.vault.azure.net/",
+        "VaultUriKey": "https://webapplication4vaul.vault.azure.net/"
       }
     },
     "WebApplication4": {
@@ -25,7 +26,8 @@
         "VaultUrioo": "https://webapplication4vaul.vault.azure.net/",
         "AZURE_USERNAME": "0Klimka.Limka0@gmail.com",
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "VaultUriwq": "https://webapplication4vaul.vault.azure.net/"
+        "VaultUriwq": "https://webapplication4vaul.vault.azure.net/",
+        "VaultUriKey": "https://webapplication4vaul.vault.azure.net/"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
     }

@@ -15491,3 +15491,830 @@ WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
 2020-11-08 19:04:48.858 +03:00 [INF] Executed action WebApplication4.Controllers.AccountController.Login (WebApplication4) in 13608.7315ms
 2020-11-08 19:04:48.858 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.AccountController.Login (WebApplication4)'
 2020-11-08 19:04:48.864 +03:00 [INF] Request finished in 13704.6293ms 200 text/html; charset=utf-8
+2020-11-08 19:51:55.448 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-08 19:52:10.959 +03:00 [INF] Executed DbCommand (729ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-08 19:52:11.253 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-08 19:52:11.311 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-08 19:52:11.472 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-08 19:52:12.799 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-08 19:52:13.103 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-08 19:52:13.255 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-08 19:52:13.432 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-08 19:52:13.458 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-08 19:52:13.585 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-08 19:52:13.909 +03:00 [INF] Executed ViewResult - view Index executed in 331.9499ms.
+2020-11-08 19:52:13.916 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 657.2195ms
+2020-11-08 19:52:13.920 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-08 19:52:14.050 +03:00 [INF] Request finished in 1263.2609ms 200 text/html; charset=utf-8
+2020-11-08 19:52:14.471 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/7e2148aa04c4a2dce49ed4f25e281cf5.jpg  
+2020-11-08 19:52:14.500 +03:00 [INF] The file /Files/7e2148aa04c4a2dce49ed4f25e281cf5.jpg was not modified
+2020-11-08 19:52:14.511 +03:00 [INF] Request finished in 42.0796ms 304 image/jpeg
+2020-11-08 19:55:20.927 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Articles/Details/1  
+2020-11-08 19:55:20.950 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-08 19:55:20.970 +03:00 [INF] Route matched with {action = "Details", controller = "Articles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.ArticlesController (WebApplication4).
+2020-11-08 19:55:21.023 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-08 19:55:21.076 +03:00 [INF] Executed DbCommand (25ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+WHERE [a].[ArticleID] = @__id_0
+2020-11-08 19:55:21.127 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-11-08 19:55:21.348 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@__ArticleID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CommentID], [c].[ArticleID], [c].[DateTime], [c].[Dislike], [c].[Like], [c].[ProfileID], [c].[Text], [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Comments] AS [c]
+INNER JOIN [Articles] AS [a] ON [c].[ArticleID] = [a].[ArticleID]
+WHERE [c].[ArticleID] = @__ArticleID_0
+2020-11-08 19:55:21.383 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-11-08 19:55:21.394 +03:00 [INF] Executing ViewResult, running view Details.
+2020-11-08 19:55:21.480 +03:00 [INF] Executed ViewResult - view Details executed in 88.0288ms.
+2020-11-08 19:55:21.481 +03:00 [INF] Executed action WebApplication4.Controllers.ArticlesController.Details (WebApplication4) in 510.4731ms
+2020-11-08 19:55:21.481 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-08 19:55:21.484 +03:00 [INF] Request finished in 556.6965ms 200 text/html; charset=utf-8
+2020-11-08 20:19:31.148 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-08 20:19:35.914 +03:00 [INF] Executed DbCommand (417ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-08 20:19:36.479 +03:00 [INF] Executed DbCommand (290ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-08 20:19:36.745 +03:00 [INF] Executed DbCommand (218ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-08 20:19:37.146 +03:00 [INF] Executed DbCommand (177ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-08 20:19:38.590 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-08 20:19:38.929 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-08 20:19:39.102 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-08 20:19:39.401 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-08 20:19:39.651 +03:00 [INF] Executed DbCommand (232ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-08 20:19:39.864 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-08 20:19:40.467 +03:00 [INF] Executed ViewResult - view Index executed in 626.297ms.
+2020-11-08 20:19:40.547 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 1442.3749ms
+2020-11-08 20:19:40.552 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-08 20:19:40.668 +03:00 [INF] Request finished in 2088.0771ms 200 text/html; charset=utf-8
+2020-11-08 20:19:41.003 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/4605912.jpg  
+2020-11-08 20:19:41.091 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-08 20:19:41.101 +03:00 [INF] Route matched with {action = "Index", controller = "Error"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.Error (WebApplication4).
+2020-11-08 20:19:41.119 +03:00 [ERR] Error. Status code 404
+2020-11-08 20:19:41.202 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-08 20:19:41.313 +03:00 [INF] Executed ViewResult - view Index executed in 113.6447ms.
+2020-11-08 20:19:41.314 +03:00 [INF] Executed action WebApplication4.Controllers.Error.Index (WebApplication4) in 212.5793ms
+2020-11-08 20:19:41.314 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-08 20:19:41.314 +03:00 [INF] Request finished in 314.5365ms 404 text/html; charset=utf-8
+2020-11-08 20:57:32.613 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-08 20:57:35.896 +03:00 [INF] Executed DbCommand (340ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-08 20:57:36.299 +03:00 [INF] Executed DbCommand (173ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-08 20:57:36.497 +03:00 [INF] Executed DbCommand (170ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-08 20:57:36.818 +03:00 [INF] Executed DbCommand (166ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-08 20:57:37.942 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-08 20:57:38.359 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-08 20:57:38.485 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-08 20:57:38.694 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-08 20:57:38.883 +03:00 [INF] Executed DbCommand (169ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-08 20:57:38.971 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-08 20:57:39.232 +03:00 [INF] Executed ViewResult - view Index executed in 265.0876ms.
+2020-11-08 20:57:39.243 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 755.3525ms
+2020-11-08 20:57:39.248 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-08 20:57:39.353 +03:00 [INF] Request finished in 1431.1907ms 200 text/html; charset=utf-8
+2020-11-08 20:57:39.605 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/4605912.jpg  
+2020-11-08 20:57:39.683 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-08 20:57:39.688 +03:00 [INF] Route matched with {action = "Index", controller = "Error"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.Error (WebApplication4).
+2020-11-08 20:57:39.702 +03:00 [ERR] Error. Status code 404
+2020-11-08 20:57:39.922 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-08 20:57:39.962 +03:00 [INF] Executed ViewResult - view Index executed in 43.0703ms.
+2020-11-08 20:57:39.962 +03:00 [INF] Executed action WebApplication4.Controllers.Error.Index (WebApplication4) in 274.1984ms
+2020-11-08 20:57:39.962 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-08 20:57:39.963 +03:00 [INF] Request finished in 359.7481ms 404 text/html; charset=utf-8
+2020-11-08 20:57:41.884 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Account/Login  
+2020-11-08 20:57:41.914 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.AccountController.Login (WebApplication4)'
+2020-11-08 20:57:41.934 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String) on controller WebApplication4.Controllers.AccountController (WebApplication4).
+2020-11-08 20:57:41.951 +03:00 [INF] Executing ViewResult, running view Login.
+2020-11-08 20:57:42.071 +03:00 [INF] Executed ViewResult - view Login executed in 122.3919ms.
+2020-11-08 20:57:42.071 +03:00 [INF] Executed action WebApplication4.Controllers.AccountController.Login (WebApplication4) in 136.7124ms
+2020-11-08 20:57:42.071 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.AccountController.Login (WebApplication4)'
+2020-11-08 20:57:42.072 +03:00 [INF] Request finished in 189.48ms 200 text/html; charset=utf-8
+2020-11-08 20:57:47.919 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Account/Register  
+2020-11-08 20:57:47.931 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.AccountController.Register (WebApplication4)'
+2020-11-08 20:57:47.947 +03:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register() on controller WebApplication4.Controllers.AccountController (WebApplication4).
+2020-11-08 20:57:47.972 +03:00 [INF] Executing ViewResult, running view Register.
+2020-11-08 20:57:48.049 +03:00 [INF] Executed ViewResult - view Register executed in 81.8865ms.
+2020-11-08 20:57:48.050 +03:00 [INF] Executed action WebApplication4.Controllers.AccountController.Register (WebApplication4) in 101.605ms
+2020-11-08 20:57:48.050 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.AccountController.Register (WebApplication4)'
+2020-11-08 20:57:48.050 +03:00 [INF] Request finished in 131.9239ms 200 text/html; charset=utf-8
+2020-11-08 20:58:10.171 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44392/Account/Register application/x-www-form-urlencoded 288
+2020-11-08 20:58:10.173 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.AccountController.Register (WebApplication4)'
+2020-11-08 20:58:10.191 +03:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(WebApplication4.ViewModels.RegisterViewModel) on controller WebApplication4.Controllers.AccountController (WebApplication4).
+2020-11-08 20:58:10.284 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-08 20:58:10.458 +03:00 [INF] Executed DbCommand (168ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-08 20:58:11.073 +03:00 [INF] Executed DbCommand (176ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 256), @p15='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName], [isBlocked])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2020-11-08 20:58:25.026 +03:00 [INF] Executing ViewResult, running view ~/Views/Shared/TextPage.cshtml.
+2020-11-08 20:58:25.037 +03:00 [INF] Executed ViewResult - view ~/Views/Shared/TextPage.cshtml executed in 12.8599ms.
+2020-11-08 20:58:25.037 +03:00 [INF] Executed action WebApplication4.Controllers.AccountController.Register (WebApplication4) in 14846.2626ms
+2020-11-08 20:58:25.037 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.AccountController.Register (WebApplication4)'
+2020-11-08 20:58:25.041 +03:00 [INF] Request finished in 14874.2945ms 200 text/html; charset=utf-8
+2020-11-14 15:43:56.319 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-14 15:43:59.981 +03:00 [INF] Executed DbCommand (436ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-14 15:44:00.833 +03:00 [INF] Executed DbCommand (423ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-14 15:44:01.206 +03:00 [INF] Executed DbCommand (232ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-14 15:44:01.686 +03:00 [INF] Executed DbCommand (186ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-14 15:44:03.532 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-14 15:44:03.858 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-14 15:44:03.991 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-14 15:44:04.194 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-14 15:44:04.455 +03:00 [INF] Executed DbCommand (228ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-14 15:44:04.603 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-14 15:44:05.102 +03:00 [INF] Executed ViewResult - view Index executed in 509.073ms.
+2020-11-14 15:44:05.107 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 1114.3448ms
+2020-11-14 15:44:05.110 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-14 15:44:05.197 +03:00 [INF] Request finished in 1676.1198ms 200 text/html; charset=utf-8
+2020-11-14 15:44:08.249 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/assets/fonts/ionicons.min.css  
+2020-11-14 15:44:08.250 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/assets/css/Footer-Basic.css  
+2020-11-14 15:44:08.249 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/assets/bootstrap/css/bootstrap.min.css  
+2020-11-14 15:44:08.277 +03:00 [INF] The file /assets/fonts/ionicons.min.css was not modified
+2020-11-14 15:44:08.277 +03:00 [INF] The file /assets/bootstrap/css/bootstrap.min.css was not modified
+2020-11-14 15:44:08.277 +03:00 [INF] The file /assets/css/Footer-Basic.css was not modified
+2020-11-14 15:44:08.283 +03:00 [INF] Request finished in 35.0297ms 304 text/css
+2020-11-14 15:44:08.283 +03:00 [INF] Request finished in 34.174ms 304 text/css
+2020-11-14 15:44:08.285 +03:00 [INF] Request finished in 37.0314ms 304 text/css
+2020-11-14 15:44:08.337 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/assets/css/Footer-Dark.css  
+2020-11-14 15:44:08.338 +03:00 [INF] The file /assets/css/Footer-Dark.css was not modified
+2020-11-14 15:44:08.340 +03:00 [INF] Request finished in 3.6277ms 304 text/css
+2020-11-14 15:44:08.350 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/assets/css/Navigation-with-Button.css  
+2020-11-14 15:44:08.351 +03:00 [INF] The file /assets/css/Navigation-with-Button.css was not modified
+2020-11-14 15:44:08.351 +03:00 [INF] Request finished in 0.9595ms 304 text/css
+2020-11-14 15:44:08.469 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/assets/css/styles.css  
+2020-11-14 15:44:08.469 +03:00 [INF] The file /assets/css/styles.css was not modified
+2020-11-14 15:44:08.470 +03:00 [INF] Request finished in 0.9939ms 304 text/css
+2020-11-14 15:44:08.549 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/assets/js/jquery.min.js  
+2020-11-14 15:44:08.550 +03:00 [INF] The file /assets/js/jquery.min.js was not modified
+2020-11-14 15:44:08.551 +03:00 [INF] Request finished in 1.3179ms 304 application/javascript
+2020-11-14 15:44:08.579 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/assets/bootstrap/js/bootstrap.min.js  
+2020-11-14 15:44:08.579 +03:00 [INF] The file /assets/bootstrap/js/bootstrap.min.js was not modified
+2020-11-14 15:44:08.580 +03:00 [INF] Request finished in 1.0169ms 304 application/javascript
+2020-11-14 15:44:08.585 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/4605912.jpg  
+2020-11-14 15:44:08.605 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-14 15:44:08.612 +03:00 [INF] Route matched with {action = "Index", controller = "Error"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.Error (WebApplication4).
+2020-11-14 15:44:08.626 +03:00 [ERR] Error. Status code 404
+2020-11-14 15:44:08.673 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-14 15:44:08.695 +03:00 [INF] Executed ViewResult - view Index executed in 26.6063ms.
+2020-11-14 15:44:08.695 +03:00 [INF] Executed action WebApplication4.Controllers.Error.Index (WebApplication4) in 82.2886ms
+2020-11-14 15:44:08.695 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-14 15:44:08.696 +03:00 [INF] Request finished in 111.3874ms 404 text/html; charset=utf-8
+2020-11-14 15:44:09.540 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/assets/fonts/ionicons.ttf  
+2020-11-14 15:44:09.543 +03:00 [INF] The file /assets/fonts/ionicons.ttf was not modified
+2020-11-14 15:44:09.544 +03:00 [INF] Request finished in 4.207ms 304 application/x-font-ttf
+2020-11-14 15:57:12.927 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-14 15:57:16.324 +03:00 [INF] Executed DbCommand (311ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-14 15:57:16.686 +03:00 [INF] Executed DbCommand (189ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-14 15:57:16.901 +03:00 [INF] Executed DbCommand (185ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-14 15:57:17.220 +03:00 [INF] Executed DbCommand (193ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-14 15:57:18.073 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-14 15:58:23.889 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-14 15:58:28.502 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-14 15:58:28.655 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-14 15:58:28.864 +03:00 [INF] Executed DbCommand (192ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-14 15:58:28.953 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-14 15:58:29.238 +03:00 [INF] Executed ViewResult - view Index executed in 290.0857ms.
+2020-11-14 15:58:29.245 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 741.5353ms
+2020-11-14 15:58:29.250 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-14 15:58:29.367 +03:00 [INF] Request finished in 71306.3685ms 200 text/html; charset=utf-8
+2020-11-14 15:58:29.722 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/4605912.jpg  
+2020-11-14 15:58:29.788 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-14 15:58:29.802 +03:00 [INF] Route matched with {action = "Index", controller = "Error"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.Error (WebApplication4).
+2020-11-14 15:58:29.846 +03:00 [ERR] Error. Status code 404
+2020-11-14 15:58:29.890 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-14 15:58:29.912 +03:00 [INF] Executed ViewResult - view Index executed in 23.8465ms.
+2020-11-14 15:58:29.913 +03:00 [INF] Executed action WebApplication4.Controllers.Error.Index (WebApplication4) in 110.4371ms
+2020-11-14 15:58:29.913 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-14 15:58:29.922 +03:00 [INF] Request finished in 200.117ms 404 text/html; charset=utf-8
+2020-11-14 16:10:33.621 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-14 16:10:36.619 +03:00 [INF] Executed DbCommand (322ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-14 16:10:37.107 +03:00 [INF] Executed DbCommand (197ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-14 16:10:37.324 +03:00 [INF] Executed DbCommand (187ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-14 16:10:37.625 +03:00 [INF] Executed DbCommand (184ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-14 16:10:38.387 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-14 16:10:47.505 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-14 16:10:47.581 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-14 16:10:47.728 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-14 16:10:47.932 +03:00 [INF] Executed DbCommand (186ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-14 16:10:48.039 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-14 16:10:48.342 +03:00 [INF] Executed ViewResult - view Index executed in 311.4702ms.
+2020-11-14 16:10:48.348 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 765.5639ms
+2020-11-14 16:10:48.352 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-14 16:10:48.575 +03:00 [INF] Request finished in 10195.5639ms 200 text/html; charset=utf-8
+2020-11-14 16:10:49.012 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/4605912.jpg  
+2020-11-14 16:10:49.040 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-14 16:10:49.048 +03:00 [INF] Route matched with {action = "Index", controller = "Error"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.Error (WebApplication4).
+2020-11-14 16:10:49.091 +03:00 [ERR] Error. Status code 404
+2020-11-14 16:10:49.171 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-14 16:10:49.207 +03:00 [INF] Executed ViewResult - view Index executed in 39.0385ms.
+2020-11-14 16:10:49.208 +03:00 [INF] Executed action WebApplication4.Controllers.Error.Index (WebApplication4) in 158.0789ms
+2020-11-14 16:10:49.208 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-14 16:10:49.209 +03:00 [INF] Request finished in 197.9586ms 404 text/html; charset=utf-8
+2020-11-14 17:13:58.402 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-14 17:14:02.624 +03:00 [INF] Executed DbCommand (379ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-14 17:14:03.023 +03:00 [INF] Executed DbCommand (180ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-14 17:14:03.230 +03:00 [INF] Executed DbCommand (168ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-14 17:14:03.541 +03:00 [INF] Executed DbCommand (169ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-14 17:14:04.550 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-14 17:14:04.918 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-14 17:14:05.006 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-14 17:14:05.165 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-14 17:14:05.350 +03:00 [INF] Executed DbCommand (175ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-14 17:14:05.437 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-14 17:14:05.730 +03:00 [INF] Executed ViewResult - view Index executed in 291.1487ms.
+2020-11-14 17:14:05.734 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 727.2121ms
+2020-11-14 17:14:05.739 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-14 17:14:05.846 +03:00 [INF] Request finished in 1223.703ms 200 text/html; charset=utf-8
+2020-11-14 17:14:06.232 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/4605912.jpg  
+2020-11-14 17:14:06.276 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-14 17:14:06.282 +03:00 [INF] Route matched with {action = "Index", controller = "Error"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.Error (WebApplication4).
+2020-11-14 17:14:06.296 +03:00 [ERR] Error. Status code 404
+2020-11-14 17:14:06.435 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-14 17:14:06.482 +03:00 [INF] Executed ViewResult - view Index executed in 49.7488ms.
+2020-11-14 17:14:06.483 +03:00 [INF] Executed action WebApplication4.Controllers.Error.Index (WebApplication4) in 200.9807ms
+2020-11-14 17:14:06.483 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-14 17:14:06.483 +03:00 [INF] Request finished in 252.1987ms 404 text/html; charset=utf-8
+2020-11-15 14:50:18.325 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 14:50:21.949 +03:00 [INF] Executed DbCommand (349ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-15 14:50:22.336 +03:00 [INF] Executed DbCommand (189ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-15 14:50:22.551 +03:00 [INF] Executed DbCommand (180ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-15 14:50:22.895 +03:00 [INF] Executed DbCommand (190ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-15 14:50:23.928 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-15 14:50:24.168 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-15 14:50:24.280 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-15 14:58:16.770 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 14:58:18.402 +03:00 [INF] Executed DbCommand (184ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-15 14:58:18.505 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-15 14:58:18.789 +03:00 [INF] Executed ViewResult - view Index executed in 290.0611ms.
+2020-11-15 14:58:18.794 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 474512.4509ms
+2020-11-15 14:58:18.798 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-15 14:58:18.825 +03:00 [INF] Request finished in 474904.2089ms 200 text/html; charset=utf-8
+2020-11-15 14:58:19.435 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/4605912.jpg  
+2020-11-15 14:58:19.497 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-15 14:58:19.506 +03:00 [INF] Route matched with {action = "Index", controller = "Error"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.Error (WebApplication4).
+2020-11-15 14:58:19.544 +03:00 [ERR] Error. Status code 404
+2020-11-15 14:58:19.604 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-15 14:58:19.651 +03:00 [INF] Executed ViewResult - view Index executed in 49.0338ms.
+2020-11-15 14:58:19.652 +03:00 [INF] Executed action WebApplication4.Controllers.Error.Index (WebApplication4) in 144.8613ms
+2020-11-15 14:58:19.653 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.Error.Index (WebApplication4)'
+2020-11-15 14:58:19.658 +03:00 [INF] Request finished in 224.6157ms 404 text/html; charset=utf-8
+2020-11-15 14:58:20.135 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/favicon.ico  
+2020-11-15 14:58:20.204 +03:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\Артём\source\repos\WebApplication4\WebApplication4\wwwroot\favicon.ico'
+2020-11-15 14:58:20.205 +03:00 [INF] Request finished in 70.4161ms 200 image/x-icon
+2020-11-15 15:01:26.878 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:01:37.831 +03:00 [INF] Executed DbCommand (358ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-15 15:01:38.115 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-15 15:01:38.186 +03:00 [INF] Executed DbCommand (31ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-15 15:01:38.340 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-15 15:01:39.254 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-15 15:01:39.509 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-15 15:01:39.609 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-15 15:01:39.773 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:01:39.790 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-15 15:01:39.889 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-15 15:01:40.187 +03:00 [INF] Executed ViewResult - view Index executed in 301.7141ms.
+2020-11-15 15:01:40.193 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 583.4868ms
+2020-11-15 15:01:40.196 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-15 15:01:40.239 +03:00 [INF] Request finished in 999.8918ms 200 text/html; charset=utf-8
+2020-11-15 15:01:40.699 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/client_secret_872141739752-cnd1jbp6iqd1of8mdhdg4v68svg047j8.apps.googleusercontent.com.json  
+2020-11-15 15:01:40.705 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/1344.png  
+2020-11-15 15:01:40.724 +03:00 [INF] The file /Files/1344.png was not modified
+2020-11-15 15:01:40.724 +03:00 [INF] The file /Files/client_secret_872141739752-cnd1jbp6iqd1of8mdhdg4v68svg047j8.apps.googleusercontent.com.json was not modified
+2020-11-15 15:01:40.730 +03:00 [INF] Request finished in 31.7532ms 304 application/json
+2020-11-15 15:01:40.730 +03:00 [INF] Request finished in 24.8617ms 304 image/png
+2020-11-15 15:01:40.877 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/3256.png  
+2020-11-15 15:01:40.878 +03:00 [INF] The file /Files/3256.png was not modified
+2020-11-15 15:01:40.879 +03:00 [INF] Request finished in 1.6522ms 304 image/png
+2020-11-15 15:01:41.094 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/11.png  
+2020-11-15 15:01:41.097 +03:00 [INF] The file /Files/11.png was not modified
+2020-11-15 15:01:41.098 +03:00 [INF] Request finished in 4.9948ms 304 image/png
+2020-11-15 15:01:41.119 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/3.png  
+2020-11-15 15:01:41.121 +03:00 [INF] The file /Files/3.png was not modified
+2020-11-15 15:01:41.122 +03:00 [INF] Request finished in 3.0203ms 304 image/png
+2020-11-15 15:01:41.124 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/7e2148aa04c4a2dce49ed4f25e281cf5.jpg  
+2020-11-15 15:01:41.254 +03:00 [INF] Sending file. Request path: '/Files/7e2148aa04c4a2dce49ed4f25e281cf5.jpg'. Physical path: 'C:\Users\Артём\source\repos\WebApplication4\WebApplication4\wwwroot\Files\7e2148aa04c4a2dce49ed4f25e281cf5.jpg'
+2020-11-15 15:01:41.254 +03:00 [INF] Request finished in 130.6251ms 200 image/jpeg
+2020-11-15 15:03:28.606 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Articles/Create  
+2020-11-15 15:03:28.679 +03:00 [INF] Authorization failed.
+2020-11-15 15:03:28.693 +03:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2020-11-15 15:03:28.695 +03:00 [INF] Request finished in 92.8238ms 302 
+2020-11-15 15:03:28.700 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Account/Login?ReturnUrl=%2FArticles%2FCreate  
+2020-11-15 15:03:28.715 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.AccountController.Login (WebApplication4)'
+2020-11-15 15:03:28.732 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String) on controller WebApplication4.Controllers.AccountController (WebApplication4).
+2020-11-15 15:03:28.761 +03:00 [INF] Executing ViewResult, running view Login.
+2020-11-15 15:03:28.947 +03:00 [INF] Executed ViewResult - view Login executed in 188.7758ms.
+2020-11-15 15:03:28.947 +03:00 [INF] Executed action WebApplication4.Controllers.AccountController.Login (WebApplication4) in 214.6249ms
+2020-11-15 15:03:28.947 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.AccountController.Login (WebApplication4)'
+2020-11-15 15:03:28.948 +03:00 [INF] Request finished in 247.9877ms 200 text/html; charset=utf-8
+2020-11-15 15:03:30.850 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44392/Account/ExternalLogin?retunUrl=%2FArticles%2FCreate application/x-www-form-urlencoded 198
+2020-11-15 15:03:30.875 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.AccountController.ExternalLogin (WebApplication4)'
+2020-11-15 15:03:30.884 +03:00 [INF] Route matched with {action = "ExternalLogin", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ExternalLogin(System.String, System.String) on controller WebApplication4.Controllers.AccountController (WebApplication4).
+2020-11-15 15:03:30.977 +03:00 [INF] Executing ChallengeResult with authentication schemes (["Google"]).
+2020-11-15 15:03:31.014 +03:00 [INF] AuthenticationScheme: Google was challenged.
+2020-11-15 15:03:31.015 +03:00 [INF] Executed action WebApplication4.Controllers.AccountController.ExternalLogin (WebApplication4) in 130.4159ms
+2020-11-15 15:03:31.015 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.AccountController.ExternalLogin (WebApplication4)'
+2020-11-15 15:03:31.017 +03:00 [INF] Request finished in 182.7488ms 302 
+2020-11-15 15:03:32.600 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/signin-google?state=CfDJ8CYAZLgfnehGqV85M5KmX-jzM9WGGMXrJ3l0m54US3CMRIHEwjPwUDr1uQfYAcubFYr5Lv7-gEouNTy9VE3PtW6nnpya11cQIiexSmA9meDqLOWEpbft7JckuRyovyYjr7Q0KjC2wpNoy291wVIeE2U_2ZVTTgE3AyVNRjQF-CAXWQI1OcwcLKa-aKMcPT-xCrxHLp6troXv9-n84A0o5_YCpNYql-WMYc2M2WYnpUxxCaBJx_J2F6AwSzlrLY11-qYMPI2udPznxXj21zmdiYc&code=4%2F0AY0e-g5wnNzDFMxNX6K9uKc5QiN0Myry1IPAI4bNHkxp_XPirI3RKCS4eBtQczGRp6j2Cg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=none  
+2020-11-15 15:03:33.693 +03:00 [INF] AuthenticationScheme: Identity.External signed in.
+2020-11-15 15:03:33.696 +03:00 [INF] Request finished in 1096.2434ms 302 
+2020-11-15 15:03:33.708 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Account/ExternalLoginCallback  
+2020-11-15 15:03:33.709 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.AccountController.ExternalLoginCallback (WebApplication4)'
+2020-11-15 15:03:33.734 +03:00 [INF] Route matched with {action = "ExternalLoginCallback", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExternalLoginCallback(System.String, System.String) on controller WebApplication4.Controllers.AccountController (WebApplication4).
+2020-11-15 15:03:33.876 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:03:33.925 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[@__loginProvider_0='?' (Size = 450), @__providerKey_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[LoginProvider], [a].[ProviderKey], [a].[ProviderDisplayName], [a].[UserId]
+FROM [AspNetUserLogins] AS [a]
+WHERE ([a].[LoginProvider] = @__loginProvider_0) AND ([a].[ProviderKey] = @__providerKey_1)
+2020-11-15 15:03:34.046 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userId_0
+2020-11-15 15:03:34.081 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2020-11-15 15:03:34.178 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2020-11-15 15:03:34.323 +03:00 [INF] Executed DbCommand (22ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2020-11-15 15:03:34.338 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-11-15 15:03:34.344 +03:00 [INF] Executing LocalRedirectResult, redirecting to /.
+2020-11-15 15:03:34.345 +03:00 [INF] Executed action WebApplication4.Controllers.AccountController.ExternalLoginCallback (WebApplication4) in 610.4387ms
+2020-11-15 15:03:34.345 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.AccountController.ExternalLoginCallback (WebApplication4)'
+2020-11-15 15:03:34.349 +03:00 [INF] Request finished in 640.5674ms 302 
+2020-11-15 15:03:34.364 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-15 15:03:34.377 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-15 15:03:34.377 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-15 15:03:34.383 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:03:34.410 +03:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-15 15:03:34.412 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-15 15:03:34.428 +03:00 [INF] Executed ViewResult - view Index executed in 16.8266ms.
+2020-11-15 15:03:34.429 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 51.3481ms
+2020-11-15 15:03:34.429 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-15 15:03:34.430 +03:00 [INF] Request finished in 65.6097ms 200 text/html; charset=utf-8
+2020-11-15 15:03:40.403 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Articles/Create  
+2020-11-15 15:03:40.431 +03:00 [INF] Authorization was successful.
+2020-11-15 15:03:40.432 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.ArticlesController.Create (WebApplication4)'
+2020-11-15 15:03:40.457 +03:00 [INF] Route matched with {action = "Create", controller = "Articles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller WebApplication4.Controllers.ArticlesController (WebApplication4).
+2020-11-15 15:03:40.474 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:03:40.491 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-15 15:03:40.539 +03:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TagID], [t].[TagName]
+FROM [Tags] AS [t]
+2020-11-15 15:03:40.549 +03:00 [INF] Executing ViewResult, running view Create.
+2020-11-15 15:03:40.674 +03:00 [INF] Executed ViewResult - view Create executed in 128.5142ms.
+2020-11-15 15:03:40.675 +03:00 [INF] Executed action WebApplication4.Controllers.ArticlesController.Create (WebApplication4) in 217.0498ms
+2020-11-15 15:03:40.675 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.ArticlesController.Create (WebApplication4)'
+2020-11-15 15:03:40.676 +03:00 [INF] Request finished in 276.1505ms 200 text/html; charset=utf-8
+2020-11-15 15:03:40.788 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/lib/jquery-validation/dist/jquery.validate.min.js  
+2020-11-15 15:03:40.806 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js  
+2020-11-15 15:03:41.227 +03:00 [INF] Sending file. Request path: '/lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: 'C:\Users\Артём\source\repos\WebApplication4\WebApplication4\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js'
+2020-11-15 15:03:41.228 +03:00 [INF] Request finished in 440.0458ms 200 application/javascript
+2020-11-15 15:03:41.238 +03:00 [INF] Sending file. Request path: '/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'. Physical path: 'C:\Users\Артём\source\repos\WebApplication4\WebApplication4\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js'
+2020-11-15 15:03:41.239 +03:00 [INF] Request finished in 433.2671ms 200 application/javascript
+2020-11-15 15:03:57.397 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44392/Articles/Create multipart/form-data; boundary=----WebKitFormBoundaryjj4fhgJGCqIqyDVB 18113851
+2020-11-15 15:03:57.422 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.ArticlesController.Create (WebApplication4)'
+2020-11-15 15:03:57.489 +03:00 [INF] Route matched with {action = "Create", controller = "Articles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(WebApplication4.Domain.Core.Article, Microsoft.AspNetCore.Http.IFormFile) on controller WebApplication4.Controllers.ArticlesController (WebApplication4).
+2020-11-15 15:03:59.594 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:03:59.611 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-15 15:03:59.675 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[TagID], [t].[TagName]
+FROM [Tags] AS [t]
+WHERE [t].[TagID] = @__p_0
+2020-11-15 15:04:00.307 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 450), @p5='?' (DbType = Int32), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Articles] ([DateTime], [Dislike], [Image], [Like], [ProfileID], [TagID], [Text], [Title])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [ArticleID]
+FROM [Articles]
+WHERE @@ROWCOUNT = 1 AND [ArticleID] = scope_identity();
+2020-11-15 15:04:00.450 +03:00 [INF] Executing RedirectResult, redirecting to /Home/Index.
+2020-11-15 15:04:00.451 +03:00 [INF] Executed action WebApplication4.Controllers.ArticlesController.Create (WebApplication4) in 2961.5704ms
+2020-11-15 15:04:00.451 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.ArticlesController.Create (WebApplication4)'
+2020-11-15 15:04:00.455 +03:00 [INF] Request finished in 3058.6293ms 301 
+2020-11-15 15:04:00.460 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Home/Index  
+2020-11-15 15:04:00.462 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-15 15:04:00.463 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-15 15:04:00.464 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:04:00.471 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-15 15:04:00.474 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-15 15:04:00.485 +03:00 [INF] Executed ViewResult - view Index executed in 10.6796ms.
+2020-11-15 15:04:00.485 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 22.0871ms
+2020-11-15 15:04:00.485 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-15 15:04:00.485 +03:00 [INF] Request finished in 25.3031ms 200 text/html; charset=utf-8
+2020-11-15 15:04:00.881 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/b682e40483514be4b0a92cefe8991d66.jpeg  
+2020-11-15 15:04:02.094 +03:00 [INF] Sending file. Request path: '/Files/b682e40483514be4b0a92cefe8991d66.jpeg'. Physical path: 'C:\Users\Артём\source\repos\WebApplication4\WebApplication4\wwwroot\Files\b682e40483514be4b0a92cefe8991d66.jpeg'
+2020-11-15 15:04:02.094 +03:00 [INF] Request finished in 1213.6405ms 200 image/jpeg
+2020-11-15 15:04:26.438 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Articles/Details/11  
+2020-11-15 15:04:26.458 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:04:26.476 +03:00 [INF] Route matched with {action = "Details", controller = "Articles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.ArticlesController (WebApplication4).
+2020-11-15 15:04:26.489 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:04:26.518 +03:00 [INF] Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+WHERE [a].[ArticleID] = @__id_0
+2020-11-15 15:04:26.544 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-11-15 15:04:26.672 +03:00 [INF] Executed DbCommand (50ms) [Parameters=[@__ArticleID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CommentID], [c].[ArticleID], [c].[DateTime], [c].[Dislike], [c].[Like], [c].[ProfileID], [c].[Text], [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Comments] AS [c]
+INNER JOIN [Articles] AS [a] ON [c].[ArticleID] = [a].[ArticleID]
+WHERE [c].[ArticleID] = @__ArticleID_0
+2020-11-15 15:04:26.675 +03:00 [INF] Executing ViewResult, running view Details.
+2020-11-15 15:04:26.745 +03:00 [INF] Executed ViewResult - view Details executed in 71.8863ms.
+2020-11-15 15:04:26.746 +03:00 [INF] Executed action WebApplication4.Controllers.ArticlesController.Details (WebApplication4) in 269.5618ms
+2020-11-15 15:04:26.746 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:04:26.747 +03:00 [INF] Request finished in 310.0115ms 200 text/html; charset=utf-8
+2020-11-15 15:04:26.923 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/b682e40483514be4b0a92cefe8991d66.jpeg  
+2020-11-15 15:04:26.935 +03:00 [INF] The file /Files/b682e40483514be4b0a92cefe8991d66.jpeg was not modified
+2020-11-15 15:04:26.936 +03:00 [INF] Request finished in 25.2473ms 304 image/jpeg
+2020-11-15 15:04:27.027 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/js/signalr/dist/browser/signalr.js  
+2020-11-15 15:04:27.050 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/js/chat.js  
+2020-11-15 15:04:27.285 +03:00 [INF] Sending file. Request path: '/js/chat.js'. Physical path: 'C:\Users\Артём\source\repos\WebApplication4\WebApplication4\wwwroot\js\chat.js'
+2020-11-15 15:04:27.285 +03:00 [INF] Request finished in 234.8852ms 200 application/javascript
+2020-11-15 15:04:27.437 +03:00 [INF] Sending file. Request path: '/js/signalr/dist/browser/signalr.js'. Physical path: 'C:\Users\Артём\source\repos\WebApplication4\WebApplication4\wwwroot\js\signalr\dist\browser\signalr.js'
+2020-11-15 15:04:27.437 +03:00 [INF] Request finished in 410.7194ms 200 application/javascript
+2020-11-15 15:04:28.456 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44392/chatHub/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-11-15 15:04:28.470 +03:00 [INF] Executing endpoint '/chathub/negotiate'
+2020-11-15 15:04:28.503 +03:00 [INF] Executed endpoint '/chathub/negotiate'
+2020-11-15 15:04:28.503 +03:00 [INF] Request finished in 46.7895ms 200 application/json
+2020-11-15 15:04:28.575 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44392/chatHub?id=2XaWxdCahk6lL3ciIU2Hmw  
+2020-11-15 15:04:28.576 +03:00 [INF] Executing endpoint '/chathub'
+2020-11-15 15:04:32.113 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Articles/Details/11  
+2020-11-15 15:04:32.117 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:04:32.118 +03:00 [INF] Route matched with {action = "Details", controller = "Articles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.ArticlesController (WebApplication4).
+2020-11-15 15:04:32.122 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:04:32.192 +03:00 [INF] Executed DbCommand (67ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+WHERE [a].[ArticleID] = @__id_0
+2020-11-15 15:04:32.223 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-11-15 15:04:32.248 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[@__ArticleID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CommentID], [c].[ArticleID], [c].[DateTime], [c].[Dislike], [c].[Like], [c].[ProfileID], [c].[Text], [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Comments] AS [c]
+INNER JOIN [Articles] AS [a] ON [c].[ArticleID] = [a].[ArticleID]
+WHERE [c].[ArticleID] = @__ArticleID_0
+2020-11-15 15:04:32.250 +03:00 [INF] Executing ViewResult, running view Details.
+2020-11-15 15:04:32.262 +03:00 [INF] Executed ViewResult - view Details executed in 11.8691ms.
+2020-11-15 15:04:32.262 +03:00 [INF] Executed action WebApplication4.Controllers.ArticlesController.Details (WebApplication4) in 143.4614ms
+2020-11-15 15:04:32.262 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:04:32.263 +03:00 [INF] Request finished in 150.6542ms 200 text/html; charset=utf-8
+2020-11-15 15:04:32.674 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44392/chatHub/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-11-15 15:04:32.685 +03:00 [INF] Executing endpoint '/chathub/negotiate'
+2020-11-15 15:04:32.690 +03:00 [INF] Executed endpoint '/chathub/negotiate'
+2020-11-15 15:04:32.691 +03:00 [INF] Request finished in 16.6143ms 200 application/json
+2020-11-15 15:04:32.867 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44392/chatHub?id=SR0Irr9FAPmwWQJAdmalFQ  
+2020-11-15 15:04:32.868 +03:00 [INF] Executing endpoint '/chathub'
+2020-11-15 15:04:38.821 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:04:38.837 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-15 15:04:38.940 +03:00 [INF] Executed DbCommand (49ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 450), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Comments] ([ArticleID], [DateTime], [Dislike], [Like], [ProfileID], [Text])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [CommentID]
+FROM [Comments]
+WHERE @@ROWCOUNT = 1 AND [CommentID] = scope_identity();
+2020-11-15 15:06:35.854 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:06:38.836 +03:00 [INF] Executed DbCommand (591ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-15 15:06:39.101 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-11-15 15:06:39.174 +03:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-15 15:06:39.337 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-15 15:06:40.195 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/  
+2020-11-15 15:06:40.434 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-15 15:06:40.536 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-15 15:06:40.675 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:06:40.729 +03:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+2020-11-15 15:06:40.824 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-15 15:06:41.122 +03:00 [INF] Executed ViewResult - view Index executed in 300.7638ms.
+2020-11-15 15:06:41.126 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.Index (WebApplication4) in 588.5375ms
+2020-11-15 15:06:41.131 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.Index (WebApplication4)'
+2020-11-15 15:06:41.256 +03:00 [INF] Request finished in 1071.8576ms 200 text/html; charset=utf-8
+2020-11-15 15:06:41.586 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/b682e40483514be4b0a92cefe8991d66.jpeg  
+2020-11-15 15:06:41.606 +03:00 [INF] The file /Files/b682e40483514be4b0a92cefe8991d66.jpeg was not modified
+2020-11-15 15:06:41.616 +03:00 [INF] Request finished in 30.4748ms 304 image/jpeg
+2020-11-15 15:06:46.441 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Articles/Details/11  
+2020-11-15 15:06:46.458 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:06:46.487 +03:00 [INF] Route matched with {action = "Details", controller = "Articles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.ArticlesController (WebApplication4).
+2020-11-15 15:06:46.532 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:06:46.565 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+WHERE [a].[ArticleID] = @__id_0
+2020-11-15 15:06:46.622 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-11-15 15:06:47.004 +03:00 [INF] Executed DbCommand (75ms) [Parameters=[@__ArticleID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CommentID], [c].[ArticleID], [c].[DateTime], [c].[Dislike], [c].[Like], [c].[ProfileID], [c].[Text], [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Comments] AS [c]
+INNER JOIN [Articles] AS [a] ON [c].[ArticleID] = [a].[ArticleID]
+WHERE [c].[ArticleID] = @__ArticleID_0
+2020-11-15 15:06:47.097 +03:00 [INF] Executing ViewResult, running view Details.
+2020-11-15 15:06:47.230 +03:00 [INF] Executed ViewResult - view Details executed in 144.8124ms.
+2020-11-15 15:06:47.230 +03:00 [INF] Executed action WebApplication4.Controllers.ArticlesController.Details (WebApplication4) in 743.4356ms
+2020-11-15 15:06:47.231 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:06:47.232 +03:00 [INF] Request finished in 792.612ms 200 text/html; charset=utf-8
+2020-11-15 15:06:47.413 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/js/chat.js  
+2020-11-15 15:06:47.666 +03:00 [INF] Sending file. Request path: '/js/chat.js'. Physical path: 'C:\Users\Артём\source\repos\WebApplication4\WebApplication4\wwwroot\js\chat.js'
+2020-11-15 15:06:47.666 +03:00 [INF] Request finished in 253.33ms 200 application/javascript
+2020-11-15 15:06:47.920 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44392/chatHub/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-11-15 15:06:47.982 +03:00 [INF] Executing endpoint '/chathub/negotiate'
+2020-11-15 15:06:48.022 +03:00 [INF] Executed endpoint '/chathub/negotiate'
+2020-11-15 15:06:48.024 +03:00 [INF] Request finished in 107.4926ms 200 application/json
+2020-11-15 15:06:48.737 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Articles/Details/11  
+2020-11-15 15:06:48.754 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:06:48.756 +03:00 [INF] Route matched with {action = "Details", controller = "Articles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.ArticlesController (WebApplication4).
+2020-11-15 15:06:48.773 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:06:49.158 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44392/chatHub?id=FBlQx4z_Zg6q7FR_MZlvww  
+2020-11-15 15:06:49.158 +03:00 [INF] Executed DbCommand (370ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+WHERE [a].[ArticleID] = @__id_0
+2020-11-15 15:06:49.165 +03:00 [INF] Executing endpoint '/chathub'
+2020-11-15 15:06:49.175 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-11-15 15:06:49.189 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__ArticleID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CommentID], [c].[ArticleID], [c].[DateTime], [c].[Dislike], [c].[Like], [c].[ProfileID], [c].[Text], [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Comments] AS [c]
+INNER JOIN [Articles] AS [a] ON [c].[ArticleID] = [a].[ArticleID]
+WHERE [c].[ArticleID] = @__ArticleID_0
+2020-11-15 15:06:49.191 +03:00 [INF] Executing ViewResult, running view Details.
+2020-11-15 15:06:49.257 +03:00 [INF] Executed ViewResult - view Details executed in 66.4533ms.
+2020-11-15 15:06:49.257 +03:00 [INF] Executed action WebApplication4.Controllers.ArticlesController.Details (WebApplication4) in 500.0325ms
+2020-11-15 15:06:49.257 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:06:49.258 +03:00 [INF] Request finished in 521.5593ms 200 text/html; charset=utf-8
+2020-11-15 15:06:49.574 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44392/chatHub/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-11-15 15:06:49.575 +03:00 [INF] Executing endpoint '/chathub/negotiate'
+2020-11-15 15:06:49.674 +03:00 [INF] Executed endpoint '/chathub/negotiate'
+2020-11-15 15:06:49.675 +03:00 [INF] Request finished in 100.6182ms 200 application/json
+2020-11-15 15:06:50.436 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44392/chatHub?id=rk61mZPp4t8Ra8LBcTZsPQ  
+2020-11-15 15:06:50.448 +03:00 [INF] Executing endpoint '/chathub'
+2020-11-15 15:06:54.822 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:06:54.834 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-11-15 15:06:55.310 +03:00 [INF] Executed DbCommand (36ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 450), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Comments] ([ArticleID], [DateTime], [Dislike], [Like], [ProfileID], [Text])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [CommentID]
+FROM [Comments]
+WHERE @@ROWCOUNT = 1 AND [CommentID] = scope_identity();
+2020-11-15 15:07:08.551 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Articles/Details/11  
+2020-11-15 15:07:08.563 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:07:08.566 +03:00 [INF] Route matched with {action = "Details", controller = "Articles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.ArticlesController (WebApplication4).
+2020-11-15 15:07:08.572 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:07:08.588 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+WHERE [a].[ArticleID] = @__id_0
+2020-11-15 15:07:08.614 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-11-15 15:07:08.629 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__ArticleID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CommentID], [c].[ArticleID], [c].[DateTime], [c].[Dislike], [c].[Like], [c].[ProfileID], [c].[Text], [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Comments] AS [c]
+INNER JOIN [Articles] AS [a] ON [c].[ArticleID] = [a].[ArticleID]
+WHERE [c].[ArticleID] = @__ArticleID_0
+2020-11-15 15:07:08.634 +03:00 [INF] Executing ViewResult, running view Details.
+2020-11-15 15:07:08.665 +03:00 [INF] Executed ViewResult - view Details executed in 30.4501ms.
+2020-11-15 15:07:08.666 +03:00 [INF] Executed action WebApplication4.Controllers.ArticlesController.Details (WebApplication4) in 98.9327ms
+2020-11-15 15:07:08.666 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:07:08.667 +03:00 [INF] Request finished in 117.1238ms 200 text/html; charset=utf-8
+2020-11-15 15:07:08.834 +03:00 [INF] Executed endpoint '/chathub'
+2020-11-15 15:07:08.839 +03:00 [INF] Request finished in 18400.9396ms 101 
+2020-11-15 15:07:08.856 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/b682e40483514be4b0a92cefe8991d66.jpeg  
+2020-11-15 15:07:08.865 +03:00 [INF] The file /Files/b682e40483514be4b0a92cefe8991d66.jpeg was not modified
+2020-11-15 15:07:08.867 +03:00 [INF] Request finished in 16.5789ms 304 image/jpeg
+2020-11-15 15:07:08.973 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/js/chat.js  
+2020-11-15 15:07:08.983 +03:00 [INF] The file /js/chat.js was not modified
+2020-11-15 15:07:08.983 +03:00 [INF] Request finished in 10.5795ms 304 application/javascript
+2020-11-15 15:07:10.064 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44392/chatHub/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-11-15 15:07:10.076 +03:00 [INF] Executing endpoint '/chathub/negotiate'
+2020-11-15 15:07:10.096 +03:00 [INF] Executed endpoint '/chathub/negotiate'
+2020-11-15 15:07:10.098 +03:00 [INF] Request finished in 40.9001ms 200 application/json
+2020-11-15 15:07:10.216 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44392/chatHub?id=BL02dEK2BRkXAo6Pq0piRw  
+2020-11-15 15:07:10.217 +03:00 [INF] Executing endpoint '/chathub'
+2020-11-15 15:07:10.223 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/favicon.ico  
+2020-11-15 15:07:10.279 +03:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\Артём\source\repos\WebApplication4\WebApplication4\wwwroot\favicon.ico'
+2020-11-15 15:07:10.279 +03:00 [INF] Request finished in 56.8164ms 200 image/x-icon
+2020-11-15 15:17:24.772 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Home/UserArticle  
+2020-11-15 15:17:24.829 +03:00 [INF] Authorization was successful.
+2020-11-15 15:17:24.830 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.HomeController.UserArticle (WebApplication4)'
+2020-11-15 15:17:24.864 +03:00 [INF] Route matched with {action = "UserArticle", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UserArticle(System.String) on controller WebApplication4.Controllers.HomeController (WebApplication4).
+2020-11-15 15:17:24.879 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:17:25.179 +03:00 [INF] Executed DbCommand (70ms) [Parameters=[@__UserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+LEFT JOIN [AspNetUsers] AS [a0] ON [a].[ProfileID] = [a0].[Id]
+WHERE [a0].[UserName] = @__UserName_0
+2020-11-15 15:17:25.182 +03:00 [INF] Executing ViewResult, running view Index.
+2020-11-15 15:17:25.189 +03:00 [INF] Executed ViewResult - view Index executed in 6.7771ms.
+2020-11-15 15:17:25.190 +03:00 [INF] Executed action WebApplication4.Controllers.HomeController.UserArticle (WebApplication4) in 324.9184ms
+2020-11-15 15:17:25.190 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.HomeController.UserArticle (WebApplication4)'
+2020-11-15 15:17:25.191 +03:00 [INF] Request finished in 421.2551ms 200 text/html; charset=utf-8
+2020-11-15 15:17:25.242 +03:00 [INF] Executed endpoint '/chathub'
+2020-11-15 15:17:25.247 +03:00 [INF] Request finished in 615026.3466ms 101 
+2020-11-15 15:17:25.655 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Files/b682e40483514be4b0a92cefe8991d66.jpeg  
+2020-11-15 15:17:25.658 +03:00 [INF] The file /Files/b682e40483514be4b0a92cefe8991d66.jpeg was not modified
+2020-11-15 15:17:25.667 +03:00 [INF] Request finished in 11.8098ms 304 image/jpeg
+2020-11-15 15:17:32.441 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/Articles/Details/11  
+2020-11-15 15:17:32.450 +03:00 [INF] Executing endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:17:32.450 +03:00 [INF] Route matched with {action = "Details", controller = "Articles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller WebApplication4.Controllers.ArticlesController (WebApplication4).
+2020-11-15 15:17:32.454 +03:00 [INF] Entity Framework Core 3.1.9 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: MigrationsAssembly=WebApplication4 
+2020-11-15 15:17:32.502 +03:00 [INF] Executed DbCommand (44ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Articles] AS [a]
+WHERE [a].[ArticleID] = @__id_0
+2020-11-15 15:17:32.518 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[isBlocked]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-11-15 15:17:32.529 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__ArticleID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CommentID], [c].[ArticleID], [c].[DateTime], [c].[Dislike], [c].[Like], [c].[ProfileID], [c].[Text], [a].[ArticleID], [a].[DateTime], [a].[Dislike], [a].[Image], [a].[Like], [a].[ProfileID], [a].[TagID], [a].[Text], [a].[Title]
+FROM [Comments] AS [c]
+INNER JOIN [Articles] AS [a] ON [c].[ArticleID] = [a].[ArticleID]
+WHERE [c].[ArticleID] = @__ArticleID_0
+2020-11-15 15:17:32.531 +03:00 [INF] Executing ViewResult, running view Details.
+2020-11-15 15:17:32.538 +03:00 [INF] Executed ViewResult - view Details executed in 7.1901ms.
+2020-11-15 15:17:32.539 +03:00 [INF] Executed action WebApplication4.Controllers.ArticlesController.Details (WebApplication4) in 88.0663ms
+2020-11-15 15:17:32.539 +03:00 [INF] Executed endpoint 'WebApplication4.Controllers.ArticlesController.Details (WebApplication4)'
+2020-11-15 15:17:32.539 +03:00 [INF] Request finished in 98.8284ms 200 text/html; charset=utf-8
+2020-11-15 15:17:32.884 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44392/js/chat.js  
+2020-11-15 15:17:32.886 +03:00 [INF] The file /js/chat.js was not modified
+2020-11-15 15:17:32.887 +03:00 [INF] Request finished in 2.8127ms 304 application/javascript
+2020-11-15 15:17:32.932 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44392/chatHub/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-11-15 15:17:32.956 +03:00 [INF] Executing endpoint '/chathub/negotiate'
+2020-11-15 15:17:32.981 +03:00 [INF] Executed endpoint '/chathub/negotiate'
+2020-11-15 15:17:32.981 +03:00 [INF] Request finished in 49.6062ms 200 application/json
+2020-11-15 15:17:33.055 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44392/chatHub?id=kwDpkLQaxjx5IQ6AhL7BCg  
+2020-11-15 15:17:33.055 +03:00 [INF] Executing endpoint '/chathub'

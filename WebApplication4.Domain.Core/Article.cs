@@ -29,6 +29,7 @@ namespace WebApplication4.Domain.Core
 
         public  ICollection<Comment> Comments { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateTime { get; set; }
 
         public int Like { get; set; } = 0;
