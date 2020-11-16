@@ -2736,3 +2736,24 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-11-16 22:35:29.502 +03:00 [ERR] Doesn't exist article. Controller:Article. Action:Details
+2020-11-16 22:35:29.565 +03:00 [ERR] Error. Status code 404
+2020-11-16 22:36:32.469 +03:00 [ERR] Doesn't exist article. Controller:Article. Action:Details
+2020-11-16 22:36:32.476 +03:00 [ERR] Error. Status code 404
+2020-11-16 22:36:42.863 +03:00 [ERR] Doesn't exist article. Controller:Article. Action:Details
+2020-11-16 22:36:42.866 +03:00 [ERR] Error. Status code 404
+2020-11-16 22:40:26.323 +03:00 [ERR] Doesn't exist id. Controller:Article. Action:Details
+2020-11-16 22:40:26.367 +03:00 [ERR] Error. Status code 404
+2020-11-16 22:41:02.837 +03:00 [ERR] Doesn't exist id. Controller:Article. Action:Details
+2020-11-16 22:41:02.851 +03:00 [ERR] Error. Status code 404
+2020-11-16 22:48:30.649 +03:00 [ERR] Error. Status code 404
+2020-11-16 23:34:18.706 +03:00 [ERR] Error. Status code 404
+2020-11-16 23:34:48.181 +03:00 [ERR] Error. Status code 404
+2020-11-16 23:57:15.956 +03:00 [ERR] Doesn't exist article. Controller:Article. Action:Details
+2020-11-16 23:57:16.120 +03:00 [ERR] Error. Status code 404
+2020-11-16 23:57:20.671 +03:00 [ERR] Doesn't exist article. Controller:Article. Action:Details
+2020-11-16 23:57:20.679 +03:00 [ERR] Error. Status code 404
+2020-11-17 00:25:24.541 +03:00 [ERR] Error. Status code 404
+2020-11-17 00:25:35.401 +03:00 [ERR] Doesn't exist article. Controller:Article. Action:Details
+2020-11-17 00:25:35.419 +03:00 [ERR] Error. Status code 404
+2020-11-17 00:25:46.714 +03:00 [ERR] Error. Status code 404

@@ -18,7 +18,7 @@ namespace WebApplication4.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(int? statusCode = null)
+        public IActionResult Index(int statusCode)
         {
             ViewData["Error"] = statusCode;
             _logger.LogError($"Error. Status code {statusCode}"); 

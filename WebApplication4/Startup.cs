@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -84,10 +85,29 @@ namespace WebApplication4
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                   name: "defaul1t",
+                   pattern: "{controller}/{action}/{id}");
+                endpoints.MapControllerRoute(
+                   name: "default2",
+                   pattern: "Home/{action}/{id?}",
+                   null,
+                   new { action = new PositionConstraint() });
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
                 endpoints.MapHub<HabrDotNetHub>("/chathub");
             });
         }
+
     }
+    public class PositionConstraint : IRouteConstraint
+    {
+        string[] positions = new[] { "Index", "UserArticle" };
+        public bool Match(HttpContext httpContext, IRouter route, string routeKey,
+            RouteValueDictionary values, RouteDirection routeDirection)
+        {
+            return positions.Contains(values[routeKey]?.ToString().ToLowerInvariant());
+        }
+    }
+
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -10,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using WebApplication4.Domain.Core;
 using WebApplication4.Domain.Interfaces;
 using WebApplication4.Infrastructure.Data;
-using WebApplication4.Services.BusinessLogic;
 using WebApplication4.ViewModels;
 
 namespace WebApplication4.Controllers

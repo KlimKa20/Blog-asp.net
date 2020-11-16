@@ -23,7 +23,7 @@ namespace WebApplication4.Services.XUnitTestProject
                 new Article {   DateTime = DateTime.Now, Title = "First", Text = "Test3", TagID = 3 },
                 new Article {   DateTime = DateTime.Now, Title = "First", Text = "Test4", TagID = 1 }
             );
-
+            
             context.SaveChanges();
         }
     }

@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.AspNetCore.Http;
-using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
@@ -40,15 +35,10 @@ namespace WebApplication4.Controllers
             _commentRepository = commentRepository;
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                _logger.LogError("Doesn't exist id. Controller:Article. Action:Details");
-                return NotFound();
-            }
 
-            var article = await _articleRepository.FirstOrDefaultAsync(id.Value);
+            var article = await _articleRepository.FirstOrDefaultAsync(id);
             if (article == null)
             {
                 _logger.LogError("Doesn't exist article. Controller:Article. Action:Details");
@@ -68,9 +58,7 @@ namespace WebApplication4.Controllers
                 item.Profile = await _profileRepository.FindAsync(item.ProfileID);
                 comments.Add(item);
             }
-
             ViewData["Comment"] = comments;
-
             return View(article);
         }
 
@@ -80,7 +68,6 @@ namespace WebApplication4.Controllers
             var profile = await _userManager.FindByNameAsync(User.Identity.Name);
             if (!profile.isBlocked)
             {
-
                 ViewData["tags"] = await _tagRepository.FindAll();
                 return View();
             }
@@ -118,16 +105,9 @@ namespace WebApplication4.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-
-            if (id == null)
-            {
-                _logger.LogError("Doesn't exist id. Controller:Article. Action:Edit");
-                return NotFound();
-            }
-
-            var article = await _articleRepository.FirstOrDefaultAsync(id.Value);
+            var article = await _articleRepository.FirstOrDefaultAsync(id);
             if (article == null)
             {
                 _logger.LogError("Doesn't exist article. Controller:Article. Action:Edit");
@@ -188,21 +168,14 @@ namespace WebApplication4.Controllers
             return View(article);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                _logger.LogError("Doesn't exist id. Controller:Article. Action:Delete");
-                return NotFound();
-            }
-
-            var article = await _articleRepository.FirstOrDefaultAsync(id.Value);
+            var article = await _articleRepository.FirstOrDefaultAsync(id);
             if (article == null)
             {
                 _logger.LogError("Doesn't exist areticle. Controller:Article. Action:Delete");
                 return NotFound();
             }
-
             return View(article);
         }
 
