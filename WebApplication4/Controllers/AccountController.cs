@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApplication4.Domain.Core;
 using WebApplication4.Domain.Interfaces;
-using WebApplication4.Infrastructure.Data;
 using WebApplication4.ViewModels;
 
 namespace WebApplication4.Controllers
@@ -18,7 +17,6 @@ namespace WebApplication4.Controllers
         private readonly ILogger<AccountController> _logger;
         private readonly UserManager<Profile> _userManager;
         private readonly SignInManager<Profile> _signInManager;
-        private readonly ProfileRepository _profileRepository;
         private readonly ISender _emailService;
         public AccountController(UserManager<Profile> userManager, SignInManager<Profile> signInManager, ISender emailService, ILogger<AccountController> logger)
         {

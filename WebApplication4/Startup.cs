@@ -54,7 +54,6 @@ namespace WebApplication4
                 //options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
             });
             services.AddScoped<ArticleRepository>();
-            services.AddScoped<ProfileRepository>();
             services.AddScoped<TagRepository>();
             services.AddScoped<CommentRepository>();
             services.AddTransient<ISender,EmailService>();
@@ -85,10 +84,10 @@ namespace WebApplication4
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                   name: "defaul1t",
+                   name: "MethodWithId",
                    pattern: "{controller}/{action}/{id}");
                 endpoints.MapControllerRoute(
-                   name: "default2",
+                   name: "MainPage",
                    pattern: "Home/{action}/{id?}",
                    null,
                    new { action = new PositionConstraint() });

@@ -19,18 +19,16 @@ namespace WebApplication4.Controllers
         private readonly UserManager<Profile> _userManager;
         private readonly TagRepository _tagRepository;
         private readonly ImageService _imageService;
-        private readonly ProfileRepository _profileRepository;
         private readonly ArticleRepository _articleRepository;
         private readonly CommentRepository _commentRepository;
 
         private readonly ILogger<ArticlesController> _logger;
-        public ArticlesController(UserManager<Profile> userManager, TagRepository tagRepository, ImageService imageService, CommentRepository commentRepository, ProfileRepository profileRepository, ArticleRepository articleRepository, ILogger<ArticlesController> logger)
+        public ArticlesController(UserManager<Profile> userManager, TagRepository tagRepository, ImageService imageService, CommentRepository commentRepository, ArticleRepository articleRepository, ILogger<ArticlesController> logger)
         {
             _logger = logger;
             _userManager = userManager;
             _tagRepository = tagRepository;
             _imageService = imageService;
-            _profileRepository = profileRepository;
             _articleRepository = articleRepository;
             _commentRepository = commentRepository;
         }
@@ -45,7 +43,7 @@ namespace WebApplication4.Controllers
                 return NotFound();
             }
 
-            var user = await _profileRepository.FindAsync(article.ProfileID);
+            var user = await _userManager.FindByIdAsync(article.ProfileID);
             if (user == null)
             {
                 _logger.LogError("Doesn't exist user. Controller:Article. Action:Details");
@@ -55,7 +53,7 @@ namespace WebApplication4.Controllers
             List<Comment> comments = new List<Comment>();
             foreach (var item in _commentRepository.FindAllByArticle(article.ArticleID))
             {
-                item.Profile = await _profileRepository.FindAsync(item.ProfileID);
+                item.Profile = await _userManager.FindByIdAsync(item.ProfileID);
                 comments.Add(item);
             }
             ViewData["Comment"] = comments;
@@ -140,14 +138,15 @@ namespace WebApplication4.Controllers
                         article1.Text = article.Text;
                     if (article.Title != article1.Title && article1 != null)
                         article1.Title = article.Title;
-                    if (uploadedFile != null && uploadedFile.ContentType.ToLower().Contains("image"))
+                    if (uploadedFile != null)
                     {
-                        article1.Image = await _imageService.SaveImageAsync(uploadedFile);
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Image", "Некорректный формат");
-                        return View(article);
+                        if (uploadedFile.ContentType.ToLower().Contains("image"))
+                            article1.Image = await _imageService.SaveImageAsync(uploadedFile);
+                        else
+                        {
+                            ModelState.AddModelError("Image", "Некорректный формат");
+                            return View(article);
+                        }
                     }
                     await _articleRepository.Update(article1);
                 }

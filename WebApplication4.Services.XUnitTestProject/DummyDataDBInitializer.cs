@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WebApplication4.Domain.Core;
 using WebApplication4.Infrastructure.Data;
 
@@ -14,7 +12,6 @@ namespace WebApplication4.Services.XUnitTestProject
 
         public void Seed(ApplicationContext context)
         {
-
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
             context.Articles.AddRange(
@@ -23,7 +20,11 @@ namespace WebApplication4.Services.XUnitTestProject
                 new Article {   DateTime = DateTime.Now, Title = "First", Text = "Test3", TagID = 3 },
                 new Article {   DateTime = DateTime.Now, Title = "First", Text = "Test4", TagID = 1 }
             );
-            
+            context.Comments.AddRange(
+                new Comment {  DateTime = DateTime.Now, ArticleID = 1, Text = "Test1" },
+                new Comment {  DateTime = DateTime.Now, ArticleID = 2, Text = "Test2" },
+                new Comment {  DateTime = DateTime.Now, ArticleID = 1, Text = "Test3" }
+                );
             context.SaveChanges();
         }
     }
