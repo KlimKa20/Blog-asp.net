@@ -28,7 +28,9 @@ namespace WebApplication4.Services.BusinessLogic
             var user = await _userManager.FindByNameAsync(Context.User.Identity.Name);
             Comment comment = new Comment();
             comment.Profile = user;
-            comment.DateTime = DateTime.Now;
+            DateTime timeUtc = DateTime.UtcNow;
+            TimeZoneInfo kstZone = TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time");
+            comment.DateTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, kstZone);
             comment.ArticleID = Int32.Parse(ArticleID);
             comment.Text = Text;
             await _commentRepository.Create(comment);

@@ -94,7 +94,9 @@ namespace WebApplication4.Controllers
                     return View(article);
                 }
                 article.Profile = await _userManager.FindByNameAsync(User.Identity.Name);
-                article.DateTime = DateTime.Now;
+                DateTime timeUtc = DateTime.UtcNow;
+                TimeZoneInfo kstZone = TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time");
+                article.DateTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, kstZone);
                 article.Tag = await _tagRepository.FirstOrDefaultAsync(article.TagID);
                 await _articleRepository.Create(article);
                 return RedirectPermanent("~/Home/Index");
