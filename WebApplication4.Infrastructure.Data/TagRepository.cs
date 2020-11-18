@@ -7,7 +7,7 @@ using WebApplication4.Domain.Interfaces;
 
 namespace WebApplication4.Infrastructure.Data
 {
-    public class TagRepository : IRepository<Tag, int>
+    public class TagRepository : IRepository<Tag>
     {
 
         private readonly ApplicationContext _context;
@@ -22,11 +22,10 @@ namespace WebApplication4.Infrastructure.Data
             throw new NotImplementedException();
         }
 
-        public Task Create(Tag article)
+        public Task Create(Tag item)
         {
             throw new NotImplementedException();
         }
-
 
         public async Task<Tag> FirstOrDefaultAsync(int id)
         {
@@ -37,12 +36,12 @@ namespace WebApplication4.Infrastructure.Data
         {
             return await _context.Tags.ToListAsync();
         }
-        public Task Remove(Tag article)
+        public Task Remove(Tag item)
         {
             throw new NotImplementedException();
         }
 
-        public Task Update(Tag article)
+        public Task Update(Tag item)
         {
             throw new NotImplementedException();
         }

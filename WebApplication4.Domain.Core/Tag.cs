@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace WebApplication4.Domain.Core
 {
@@ -11,6 +8,6 @@ namespace WebApplication4.Domain.Core
 
         public string TagName { get; set; }
         public ICollection<Article> Articles { get; set; }
-        
+
     }
 }

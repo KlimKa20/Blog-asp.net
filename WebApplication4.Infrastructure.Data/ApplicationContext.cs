@@ -40,9 +40,9 @@ namespace WebApplication4.Infrastructure.Data
             });
             base.OnModelCreating(builder);
         }
-        public virtual DbSet<Profile> Profiles { get; set; }
-        public virtual DbSet<Article> Articles { get; set; }
-        public virtual DbSet<Tag> Tags { get; set; }
-        public virtual DbSet<Comment> Comments { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

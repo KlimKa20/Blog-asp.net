@@ -8,7 +8,7 @@ using WebApplication4.Domain.Interfaces;
 
 namespace WebApplication4.Infrastructure.Data
 {
-    public class CommentRepository:IRepository<Comment,int>
+    public class CommentRepository:IRepository<Comment>
     {
         private readonly ApplicationContext _context;
        
@@ -22,29 +22,28 @@ namespace WebApplication4.Infrastructure.Data
             throw new NotImplementedException();
         }
 
-        public async Task Create(Comment article)
+        public async Task Create(Comment item)
         {
-            _context.Add(article);
+            _context.Add(item);
             await _context.SaveChangesAsync();
         }
 
-        public List<Comment> FindAllByArticle(int ArticleID)
+        public List<Comment> FindAllByArticle(int id)
         {
-            return _context.Comments.Include(s => s.Article).Where(s => s.ArticleID == ArticleID).ToList();
+            return _context.Comments.Include(s => s.Article).Where(s => s.ArticleID == id).ToList();
         }
        
-
         public Task<Comment> FirstOrDefaultAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task Remove(Comment article)
+        public Task Remove(Comment item)
         {
             throw new NotImplementedException();
         }
 
-        public Task Update(Comment article)
+        public Task Update(Comment item)
         {
             throw new NotImplementedException();
         }

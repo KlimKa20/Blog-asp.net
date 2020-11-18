@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using WebApplication4.Domain.Core;
 
@@ -9,11 +7,11 @@ namespace WebApplication4.Infrastructure.Data
 {
     public class RoleInitializer
     {
-        public static async Task InitializeAsync(UserManager<Profile> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task InitializeAsync(UserManager<Profile> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
-            string adminEmail = "admin@gmail.com";
-            string adminUserName = "admin";
-            string password = "Klimovich2001!";
+            string adminEmail = configuration["Admin:Email"];
+            string adminUserName = configuration["Admin:UserName"];
+            string adminpassword = configuration["Admin:Password"];
             if (await roleManager.FindByNameAsync("admin") == null)
             {
                 await roleManager.CreateAsync(new IdentityRole("admin"));
@@ -25,7 +23,7 @@ namespace WebApplication4.Infrastructure.Data
             if (await userManager.FindByNameAsync(adminEmail) == null)
             {
                 Profile admin = new Profile { Email = adminEmail, UserName = adminUserName };
-                IdentityResult result = await userManager.CreateAsync(admin, password);
+                IdentityResult result = await userManager.CreateAsync(admin, adminpassword);
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(admin, "admin");

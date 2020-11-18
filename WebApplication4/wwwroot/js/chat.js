@@ -8,7 +8,7 @@ document.getElementById("sendButton").disabled = true;
 connection.on("ReceiveMessage", function (UserName, Text, DateTime) {
     var d = new Date();
     var s = d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-    var encodedMsg = "<p>Логин:".concat(UserName, "</p>", "<p>Коментарий:", Text, "</p>", "<p>Дата:", s, "</p><br/>");    var li = document.createElement("li");
+    var encodedMsg = "<p>Логин:".concat(UserName, "</p>", "<p>Коментарий:", Text, "</p>", "<p>Дата:", s, "</p><br/>"); var li = document.createElement("li");
     li.innerHTML = encodedMsg;
     document.getElementById("messagesList").appendChild(li);
 });
@@ -27,6 +27,6 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     connection.invoke("SendMessage", Article, Text).catch(function (err) {
         return console.error(err.toString());
     });
-    
+
     event.preventDefault();
 });

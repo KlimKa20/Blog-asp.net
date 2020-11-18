@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
-using Org.BouncyCastle.Asn1.Cms;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApplication4.ViewModels
 {

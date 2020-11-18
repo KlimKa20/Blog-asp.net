@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using WebApplication4.Domain.Core;
 using WebApplication4.Infrastructure.Data;
 using Xunit;
@@ -13,7 +11,7 @@ namespace WebApplication4.Services.XUnitTestProject
     {
         private CommentRepository repository;
         public static DbContextOptions<ApplicationContext> dbContextOptions { get; }
-        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=RazorPagesMovieContext12-bc;Trusted_Connection=True;MultipleActiveResultSets=true";
+        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=RazorPagesMovieContext122-bc;Trusted_Connection=True;MultipleActiveResultSets=true";
 
         static CommentTest()
         {
@@ -43,6 +41,9 @@ namespace WebApplication4.Services.XUnitTestProject
             Assert.NotNull(Comments);
             Assert.IsType<List<Comment>>(Comments);
             Assert.Single(Comments);
+            Comments = repository.FindAllByArticle(5);
+            Assert.IsType<List<Comment>>(Comments);
+            Assert.Empty(Comments);
         }
         [Fact]
         public async void TestCreate()

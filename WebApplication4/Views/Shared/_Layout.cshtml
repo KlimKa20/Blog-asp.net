@@ -26,45 +26,49 @@
                     <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="3" style="color: rgb(240,249,255);">Relationship</a></li>
                     @if (!User.IsInRole("admin"))
                     {
-        <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Articles" asp-action="Create" style="color: rgb(240,249,255);">Create New</a></li>
-        }
+                        <li class="nav-item" role="presentation"><a class="nav-link active" asp-area="" asp-controller="Articles" asp-action="Create" style="color: rgb(240,249,255);">Create New</a></li>
+                     }
                 </ul>
                 @if (User.Identity.IsAuthenticated)
                 {
-    <table>
-        <tr>
-            <th style="padding-right:20px;">
+                    <table>
+                        <tr>
+                            <th style="padding-right:20px;">
 
-                @if (User.IsInRole("admin"))
-                {
-<a style="color:rgb(240,249,255);" asp-controller="Home" asp-action="AdminPage">Личный кабинет</a> }
+                                @if (User.IsInRole("admin"))
+                                 {
+                                    <a style="color:rgb(240,249,255);" asp-controller="Home" asp-action="AdminPage">Личный кабинет</a> 
+                                 }
+                                else
+                                {
+                                    <a style="color:rgb(240,249,255);" asp-controller="Home" asp-action="UserArticle">Личный кабинет</a>
+                                }
+                            </th>
+                            <th style="padding-right:20px;">
+                                <p style="color:rgb(240,249,255);padding-top: 15px; padding-right: 33px;">@User.Identity.Name</p>
+                            </th>
+
+                            <th>
+                                <form method="post" asp-controller="Account" asp-action="Logout">
+                                    <input type="submit" value="Выход" />
+                                </form>
+                            </th>
+                        </tr>
+                    </table>
+                }
                 else
                 {
-<a style="color:rgb(240,249,255);" asp-controller="Home" asp-action="UserArticle">Личный кабинет</a>}
-            </th>
-            <th style="padding-right:20px;">
-                <p style="color:rgb(240,249,255);padding-top: 15px; padding-right: 33px;">@User.Identity.Name</p>
-            </th>
-
-            <th>
-                <form method="post" asp-controller="Account" asp-action="Logout">
-                    <input type="submit" value="Выход" />
-                </form>
-            </th>
-        </tr>
-    </table> }
-                else
-                {
-    <table>
-        <tr>
-            <th style="padding-right:20px;">
-                <a style="color:rgb(240,249,255);" asp-controller="Account" asp-action="Login">Вход  </a>
-            </th>
-            <th>
-                <a style="color:rgb(240,249,255);" asp-controller="Account" asp-action="Register">Регистрация</a>
-            </th>
-        </tr>
-    </table>}
+                <table>
+                    <tr>
+                        <th style="padding-right:20px;">
+                            <a style="color:rgb(240,249,255);" asp-controller="Account" asp-action="Login">Вход  </a>
+                        </th>
+                        <th>
+                            <a style="color:rgb(240,249,255);" asp-controller="Account" asp-action="Register">Регистрация</a>
+                        </th>
+                    </tr>
+                </table>
+                }
             </div>
         </div>
     </nav>

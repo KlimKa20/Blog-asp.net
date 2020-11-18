@@ -2,11 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApplication4.Domain.Core
 {
@@ -25,15 +21,12 @@ namespace WebApplication4.Domain.Core
         public Tag Tag { get; set; }
 
         public string ProfileID { get; set; }
-        public  Profile Profile { get; set; }
+        public Profile Profile { get; set; }
 
-        public  ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateTime { get; set; }
-
-        public int Like { get; set; } = 0;
-        public int Dislike { get; set; } = 0;
 
         public Article()
         {

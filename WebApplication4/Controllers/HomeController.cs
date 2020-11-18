@@ -78,7 +78,7 @@ namespace WebApplication4.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> UserBlocked(string UserName)
         {
-            var profile = _userManager.Users.Where(e => e.UserName != "admin").First();
+            var profile = _userManager.Users.Where(e => e.UserName == UserName).First();
             if (profile.isBlocked)
             {
                 profile.isBlocked = false;

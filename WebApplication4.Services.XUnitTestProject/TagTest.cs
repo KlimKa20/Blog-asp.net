@@ -1,20 +1,9 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Moq;
-using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WebApplication4.Controllers;
 using WebApplication4.Domain.Core;
 using WebApplication4.Infrastructure.Data;
 using Xunit;
-using System.Security.Permissions;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Principal;
-using System.Threading;
-using Microsoft.AspNetCore.Identity;
-using WebApplication4.Domain.Interfaces;
 
 
 namespace WebApplication4.Services.XUnitTestProject
@@ -23,7 +12,7 @@ namespace WebApplication4.Services.XUnitTestProject
     {
         private TagRepository repository;
         public static DbContextOptions<ApplicationContext> dbContextOptions { get; }
-        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=RazorPagesMovieContext12-bc;Trusted_Connection=True;MultipleActiveResultSets=true";
+        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=RazorPagesMovieContext121-bc;Trusted_Connection=True;MultipleActiveResultSets=true";
 
         static TagTest()
         {
@@ -56,6 +45,8 @@ namespace WebApplication4.Services.XUnitTestProject
             Assert.NotNull(Tag);
             Assert.IsType<Tag>(Tag);
             Assert.Equal("Relationship", Tag.TagName);
+            Tag = await repository.FirstOrDefaultAsync(5);
+            Assert.Null(Tag);
         }
        
 

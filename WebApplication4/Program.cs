@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -13,7 +11,9 @@ using Serilog;
 using Serilog.Events;
 using WebApplication4.Domain.Core;
 using WebApplication4.Infrastructure.Data;
-using Azure.Identity;
+using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Extensions.Configuration.AzureKeyVault;
 
 namespace WebApplication4
 {
@@ -42,7 +42,7 @@ namespace WebApplication4
                         .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Error)
                         .WriteTo.Console())
                         .CreateLogger();
-                    await RoleInitializer.InitializeAsync(userManager, rolesManager);
+                    await RoleInitializer.InitializeAsync(userManager, rolesManager, config);
                 }
                 catch (Exception ex)
                 {
@@ -55,17 +55,27 @@ namespace WebApplication4
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-//.ConfigureAppConfiguration((context, config) =>
-//{
-//var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUri"));
-//config.AddAzureKeyVault(
-//keyVaultEndpoint,
-//new DefaultAzureCredential());
-//})
-                  .ConfigureWebHostDefaults(webBuilder =>
-                  {
-                      webBuilder.UseStartup<Startup>();
-                  })
-                        .UseSerilog();
+                .ConfigureAppConfiguration((ctx, builder) =>
+                {
+                    var keyVaultEndpoint = GetKeyVaultEndpoint();
+                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                    {
+                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                        var keyVaultClient = new KeyVaultClient(
+                            new KeyVaultClient.AuthenticationCallback(
+                                azureServiceTokenProvider.KeyVaultTokenCallback));
+                        builder.AddAzureKeyVault(
+                        keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                    }
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                })
+                .UseSerilog();
+
+        private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("VaultUri");
+
     }
+
 }

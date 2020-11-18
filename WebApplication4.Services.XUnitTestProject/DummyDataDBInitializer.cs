@@ -17,7 +17,7 @@ namespace WebApplication4.Services.XUnitTestProject
             context.Articles.AddRange(
                 new Article {  DateTime = DateTime.Now, Title = "First", Text = "Test1", TagID = 1 },
                 new Article { DateTime = DateTime.Now, Title = "First", Text = "Test2", TagID = 2 },
-                new Article {   DateTime = DateTime.Now, Title = "First", Text = "Test3", TagID = 3 },
+                new Article {   DateTime = DateTime.Now, Title = "First", Text = "Test1", TagID = 3 },
                 new Article {   DateTime = DateTime.Now, Title = "First", Text = "Test4", TagID = 1 }
             );
             context.Comments.AddRange(

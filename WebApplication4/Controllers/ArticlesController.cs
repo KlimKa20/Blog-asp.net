@@ -21,8 +21,8 @@ namespace WebApplication4.Controllers
         private readonly ImageService _imageService;
         private readonly ArticleRepository _articleRepository;
         private readonly CommentRepository _commentRepository;
-
         private readonly ILogger<ArticlesController> _logger;
+
         public ArticlesController(UserManager<Profile> userManager, TagRepository tagRepository, ImageService imageService, CommentRepository commentRepository, ArticleRepository articleRepository, ILogger<ArticlesController> logger)
         {
             _logger = logger;
@@ -49,13 +49,14 @@ namespace WebApplication4.Controllers
                 _logger.LogError("Doesn't exist user. Controller:Article. Action:Details");
                 return RedirectPermanent("~/Error/Index?statusCode=404");
             }
-            ViewData["UserName"] = user.UserName;
+        
             List<Comment> comments = new List<Comment>();
             foreach (var item in _commentRepository.FindAllByArticle(article.ArticleID))
             {
                 item.Profile = await _userManager.FindByIdAsync(item.ProfileID);
                 comments.Add(item);
             }
+            ViewData["UserName"] = user.UserName;
             ViewData["Comment"] = comments;
             return View(article);
         }
@@ -92,8 +93,7 @@ namespace WebApplication4.Controllers
                     ViewData["tags"] = await _tagRepository.FindAll();
                     return View(article);
                 }
-                var user = await _userManager.FindByNameAsync(User.Identity.Name);
-                article.Profile = user;
+                article.Profile = await _userManager.FindByNameAsync(User.Identity.Name);
                 article.DateTime = DateTime.Now;
                 article.Tag = await _tagRepository.FirstOrDefaultAsync(article.TagID);
                 await _articleRepository.Create(article);

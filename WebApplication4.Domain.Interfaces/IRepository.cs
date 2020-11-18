@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using WebApplication4.Domain.Core;
 
 namespace WebApplication4.Domain.Interfaces
 {
-    public interface IRepository<T, Y> : IDisposable
+    public interface IRepository<T> : IDisposable
         where T : class
     {
-        Task Create(T article);
-        Task Update(T article);
-        bool Any(Y id);
-        Task Remove(T article);
-        Task<T> FirstOrDefaultAsync(Y id);
+        Task Create(T item);
+        Task Update(T item);
+        bool Any(int id);
+        Task Remove(T item);
+        Task<T> FirstOrDefaultAsync(int id);
     }
 }
