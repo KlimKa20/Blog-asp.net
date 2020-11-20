@@ -35,6 +35,11 @@ namespace WebApplication4.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (await _userManager.FindByEmailAsync(model.Email) != null)
+                {
+                    ModelState.AddModelError("Email", "Пользователь с данной почтой уже существует");
+                    return View(model);
+                }
                 Profile user = new Profile { Email = model.Email, UserName = model.UserName, isBlocked = false };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -65,11 +70,6 @@ namespace WebApplication4.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
-            if (userId == null || code == null)
-            {
-                _logger.LogError("Doesn't exist id or code. Controller:Account. Action:ConfirmEmail");
-                return NotFound();
-            }
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
@@ -213,7 +213,6 @@ namespace WebApplication4.Controllers
             if (remoteError != null)
             {
                 ModelState.AddModelError(string.Empty, $"Error from external provider: {remoteError}");
-
                 return View("Login", loginViewModel);
             }
 
@@ -221,7 +220,6 @@ namespace WebApplication4.Controllers
             if (info == null)
             {
                 ModelState.AddModelError(string.Empty, "Error loading external login information.");
-
                 return View("Login", loginViewModel);
             }
 
